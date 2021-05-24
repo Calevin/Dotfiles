@@ -1,0 +1,11 @@
+alias ippublica='curl ifconfig.me'
+alias elpronostico='curl wttr.in/buenosaires'
+alias o=xdg-open
+alias actualizarsistema='sudo pacman -Syyu && notify-send "Sistema Actualizado" '
+alias alporta='xclip -sel clip'
+alias instalar='sudo pacman -S --needed'
+alias ll='lsd -lh --group-dirs=first'
+alias la='lsd -a --group-dirs=first'
+alias l='lsd --group-dirs=first'
+alias lla='lsd -lha --group-dirs=first'
+alias ls='lsd --group-dirs=first'
