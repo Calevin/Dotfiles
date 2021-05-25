@@ -125,22 +125,18 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+
 ### Mute
 XF86AudioMute
-	amixer set Master toggle
+	bash $HOME/.config/scripts/volume.sh mute
 
 ### Master Volume
-XF86AudioRaiseVolume
-	amixer set Master 2.5%+,5%+; 
- 
-super + XF86AudioRaiseVolume
-	amixer set Master 0.5%+,1%+; 
- 
-XF86AudioLowerVolume
-	amixer set Master 2.5%-,5%-; 
- 
-super + XF86AudioLowerVolume
-	amixer set Master 0.5%-,1%-;
+XF86AudioRaiseVolume	
+	bash $HOME/.config/scripts/volume.sh up
+
+XF86AudioLowerVolume	
+	bash $HOME/.config/scripts/volume.sh down
+	
 # BRIGHTNESS
  
 # Brightness goes up
