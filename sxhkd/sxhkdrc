@@ -127,14 +127,14 @@ super + ctrl + {Left,Down,Up,Right}
 
 ### Mute
 XF86AudioMute
-	bash $HOME/.config/scripts/volume.sh mute
+	bash $HOME/.config/scripts/pavolume.sh --togmute
 
 ### Master Volume
 XF86AudioRaiseVolume	
-	bash $HOME/.config/scripts/volume.sh up
+	bash $HOME/.config/scripts/pavolume.sh --up
 
 XF86AudioLowerVolume	
-	bash $HOME/.config/scripts/volume.sh down
+	bash $HOME/.config/scripts/pavolume.sh  --down
 
 #Scrot [Shots currently go to your Pictures folder]
 #Print
