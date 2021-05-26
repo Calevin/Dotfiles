@@ -5,10 +5,10 @@
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-ROFI_THEME="$HOME/.config/polybar/mypanels/menu/powermenu.rasi"
+DIR="$HOME/.config/polybar/mypanels/menu"
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme $ROFI_THEME"
+rofi_command="rofi -theme $DIR/powermenu.rasi"
 
 # Options
 shutdown=" Shutdown"
