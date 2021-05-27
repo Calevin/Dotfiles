@@ -16,3 +16,5 @@ alias volumen='alsamixer -Dhw'
 alias volumensubir='amixer sset Master 10%+'
 alias volumenbajar='amixer sset Master 10%-'
 alias nano='nano -c'
+#alias ttcmd="echo '' | fzf -q '$*' --prompt '│ ' --pointer '― ' --preview-window=up:99% --preview='eval {q}'"
+alias buscaryay='yay -Slq | fzf -m --preview 'yay -Si {1}' | xargs -ro sudo yay -S'
