@@ -1,0 +1,22 @@
+[global_config]
+[keybindings]
+  help = None
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_darkness = 0.8
+    font = Monospace 11
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
