@@ -1,0 +1,293 @@
+@define-color cyan-raro #05c5fc;
+@define-color blanco2 #c9ecf5;
+@define-color blanco #fafeff;
+@define-color borde #08637d;
+@define-color oscuro #002732;
+@define-color oscuro-fuerte #00181f;
+@define-color claro #015b75;
+@define-color debug1 #47f505;
+
+* {
+	color: red;
+	all: unset;
+	font-size: 14px;
+	font-family: "JetBrains Mono Nerd Font 10";
+	transition: 200ms;
+}
+
+/* Avoid 'annoying' backgroud */
+.blank-window {
+	background: transparent;
+}
+
+.control-center {
+	background: alpha(@oscuro, .75);
+	border-radius: 24px;
+	border: 1px solid @borde;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, .6);
+	margin: 18px;
+	padding: 12px;
+}
+
+/* Notifications */
+.control-center .notification-row .notification-background,
+.control-center .notification-row .notification-background .notification.critical {
+	background-color: alpha(@oscuro-fuerte, .90);
+	border-radius: 16px;
+	margin: 4px 0px;
+	padding: 4px;
+}
+
+.control-center .notification-row .notification-background .notification.critical {
+	color: #FF0000;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content {
+	margin: 6px;
+	padding: 8px 6px 2px 2px;
+}
+
+.control-center .notification-row .notification-background .notification>*:last-child>* {
+	min-height: 3.4em;
+}
+
+.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action {
+	background: alpha(#FFFF00, .6);
+	color: #FF0000;
+	border-radius: 12px;
+	margin: 6px;
+}
+
+.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+	background: @claro;
+}
+
+.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:active {
+	background-color: @claro;
+}
+
+/* Buttons */
+.control-center .notification-row .notification-background .close-button {
+	background: transparent;
+	border-radius: 6px;
+	color: @blanco;
+	margin: 0px;
+	padding: 4px;
+}
+
+.control-center .notification-row .notification-background .close-button:hover {
+	background-color: @claro;
+}
+
+.control-center .notification-row .notification-background .close-button:active {
+	background-color: @oscuro;
+}
+
+progressbar,
+progress,
+trough {
+	border-radius: 12px;
+}
+
+progressbar {
+	background-color: rgba(201, 236, 245, .1);
+}
+
+/* Notifications expanded-group */
+.notification-group {
+	margin: 2px 8px 2px 8px;
+}
+
+.notification-group-headers {
+	font-weight: bold;
+	font-size: 1.25rem;
+	color: @blanco;
+	letter-spacing: 2px;
+}
+
+.notification-group-icon {
+	color: @blanco;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+	background: transparent;
+	color: @blanco;
+	margin: 4px;
+	border-radius: 6px;
+	padding: 4px;
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+	background: @claro;
+}
+
+/* WIDGETS --------------------------------------------------------------------------- */
+/* Notification clear button */
+.widget-title {
+	font-size: 1.2em;
+	margin: 6px;
+}
+
+.widget-title button {
+	background: @oscuro;
+	border-radius: 6px;
+	padding: 4px 16px;
+}
+
+.widget-title button:hover {
+	background-color: @claro;
+}
+
+.widget-title button:active {
+	background-color: #FFF000;
+}
+
+/* Do not disturb */
+.widget-dnd {
+	margin: 6px;
+	font-size: 1.2rem;
+}
+
+.widget-dnd>switch:hover {
+	background: @borde;
+}
+
+.widget-dnd>switch:checked {
+	background: #ebf3f5;
+}
+
+.widget-dnd>switch:checked:hover {
+	background: #1c0de0;
+}
+
+.widget-dnd>switch slider {
+	background: @claro;
+	border-radius: 6px;
+}
+
+/* Buttons menu */
+.widget-buttons-grid {
+	font-size: x-large;
+	padding: 6px 2px;
+	margin: 6px;
+	border-radius: 12px;
+	background: @oscuro-fuerte;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+	margin: 4px 10px;
+	padding: 6px 12px;
+	background: transparent;
+	border-radius: 8px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+	background: @claro;
+}
+
+/* Music player */
+.widget-mpris {
+	background: @oscuro;
+	border-radius: 16px;
+	color: @blanco;
+	margin: 20px 6px;
+}
+
+/* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred */
+.widget-mpris-player {
+	background-color: @oscuro-fuerte;
+	border-radius: 22px;
+	padding: 6px 14px;
+	margin: 6px;
+}
+
+.widget-mpris>box>button {
+	color: @blanco;
+	border-radius: 20px;
+}
+
+.widget-mpris button {
+	color: alpha(@blanco, .6);
+}
+
+.widget-mpris button:hover {
+	color: @oscuro-fuerte;
+}
+
+.widget-mpris-album-art {
+	border-radius: 16px;
+}
+
+.widget-mpris-album-art {
+	border-radius: 16px;
+}
+
+.widget-mpris-title {
+	font-weight: 700;
+	font-size: 1rem;
+}
+
+.widget-mpris-subtitle {
+	font-weight: 500;
+	font-size: 0.8rem;
+}
+
+.widget-volume,
+.widget-backlight {
+    background: @claro;
+    padding: 2px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    font-size: x-large;
+    color: @blanco
+}
+
+.widget-volume>box>button {
+    background: @claro;
+    border: none
+}
+
+.widget-volume label,
+.widget-backlight label {
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+.widget-volume scale,
+.widget-backlight scale {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.per-app-volume {
+    background-color: @oscuro;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 10px;
+	  color: @blanco
+}
+
+.widget-volume slider,
+.widget-backlight slider{
+    opacity: 0.5;
+}
+
+.widget-volume trough,
+.widget-backlight trough {
+    background-color: @oscuro;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 10px;
+    min-height: 15px; 
+}
+
+.widget-volume highlight,
+.widget-backlight highlight {
+    background-color: @claro;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 10px;
+}
