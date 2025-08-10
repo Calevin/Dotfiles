@@ -291,3 +291,17 @@ progressbar {
     margin: 4px;
     border-radius: 10px;
 }
+
+/* --- Pop-up Notifications Window --- */
+.notification-window {
+	background: transparent; /* Mantiene la ventana principal transparente para poder redondear el contenido */
+}
+
+.notification-row .notification-background {
+    background-color: alpha(@oscuro-fuerte, .95);
+    border-radius: 16px;
+    border: 1px solid @borde;
+    /* margin: 4px 0px; */
+    margin: 16px;
+    padding: 4px;
+}
