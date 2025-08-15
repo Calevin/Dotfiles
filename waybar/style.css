@@ -6,7 +6,7 @@
 * {
 	font-family: "JetBrains Mono";
 	font-weight: bold;
-	font-size: 8px;
+	font-size: 15px;
 	color: @blanco;
 }
 
@@ -17,7 +17,8 @@
 	box-shadow: none;
 }
 
-/* */
+/* Secciones con bordes izquierdo y derecho */
+#custom-hyprsunset,
 #workspaces,
 #window,
 #tray {
@@ -30,6 +31,7 @@
 	border-width: 0px;
 }
 
+/* Secciones con borde derecho */
 #cpu,
 #custom-notification,
 #custom-power {
@@ -41,8 +43,9 @@
 	border-width: 0px;
 }
 
+/* Secciones con borde izquierdo */
 #clock,
-#network,
+#bluetooth,
 #custom-lock {
 	background-color: @oscuro;
 	margin-top: 3px;
@@ -52,14 +55,11 @@
 	border-width: 0px;
 }
 
-#network,
 #custom-lock,
 #custom-reboot,
 #custom-power,
 #bluetooth,
-#battery,
 #pulseaudio,
-#backlight,
 #custom-temperature,
 #memory,
 #cpu {
@@ -77,9 +77,8 @@
 
 #bluetooth:hover,
 #network:hover,
-/*#tray:hover,*/
+#tray:hover,
 #backlight:hover,
-#battery:hover,
 #pulseaudio:hover,
 #custom-temperature:hover,
 #memory:hover,
@@ -112,7 +111,7 @@
 #workspaces button {
 	background: transparent;
 	border: none;
-	color: #888888;
+	color: #fa0505;
 	padding: 2px 2px;
 	margin: 0 2px;
 	font-weight: bold;
@@ -126,6 +125,6 @@
 * {
 	padding: 0;
 	margin: 0;
-	font-size: 10px;
-	min-height: 0;
+	font-size: 15px;
+	/* min-height: 0; */
 }

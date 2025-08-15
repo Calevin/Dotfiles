@@ -1,7 +1,8 @@
 {
+  "output": "HDMI-A-2",
   "layer": "top",
   "position": "top",
-  "height": 15,
+  "height": 30,
   "spacing": 0,
   "modules-left": [
     "hyprland/workspaces",
@@ -13,36 +14,33 @@
     "hyprland/privacy"
   ],
   "modules-right": [
-    "network",
-    "battery",
     "bluetooth",
     "pulseaudio",
-    "backlight",
     "custom/temperature",
     "memory",
     "cpu",
+    "custom/hyprsunset",
     "tray",
     "custom/lock",
     "custom/reboot",
     "custom/power"
   ],
+
   "hyprland/workspaces": {
     "disable-scroll": false,
     "all-outputs": true,
     "format": "{icon}",
     "on-click": "activate",
     "persistent-workspaces": {
-      "*": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
-      ]
+        "1":["HDMI-A-3"],
+        "2":["HDMI-A-3"],
+        "3":["HDMI-A-3"], 
+        "4":["HDMI-A-2"],
+        "5":["HDMI-A-2"],
+        "6":["HDMI-A-2"],
+        "7":["HDMI-A-1"],
+        "8":["HDMI-A-1"],
+        "9":["HDMI-A-1"]
     },
     "format-icons": {
       "1": "1",
@@ -54,22 +52,24 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "default": "1"
+      "default": "X"
     }
   },
-  "custom/lock": {
+  "custom/lock": { 
     "format": "<span color='#00FFFF'>  </span>",
     "on-click": "hyprlock",
     "tooltip": true,
     "tooltip-format": "Bloquar PC"
   },
   "custom/reboot": {
+    "output": "HDMI-A-2",
     "format": "<span color='#FFD700'> </span>",
     "on-click": "systemctl reboot",
     "tooltip": true,
     "tooltip-format": "Reiniciar"
   },
   "custom/power": {
+    "output": "HDMI-A-2",
     "format": "<span color='#FF4040'>  </span>",
     "on-click": "systemctl poweroff",
     "tooltip": true,
@@ -83,23 +83,6 @@
     "format-disconnected": "<span color='#FF4040'>   </span>Disconnected ",
     "format-alt": "<span color='#00FFFF'> 󰤨  </span>{essid} ",
     "interval": 1
-  },
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "<span color='#28CD41'>{icon} </span>{capacity}% ",
-    "format-charging": " 󱐋{capacity}%",
-    "interval": 1,
-    "format-icons": [
-      "󰂎",
-      "󰁼",
-      "󰁿",
-      "󰂁",
-      "󰁹"
-    ],
-    "tooltip": true
   },
   "pulseaudio": {
     "format": "<span color='#00FF7F'>{icon}</span>{volume}% ",
@@ -141,25 +124,13 @@
   "clock": {
     "interval": 1,
     "timezone": "America/Argentina/Buenos_Aires",
-    "format": " <span color='#8CF8F7'>   </span>{:%H:%M} ",
+    "format": " <span color='#8CF8F7'>   </span>{:L%d/%m/%Y %H:%M} ",
     "tooltip": true,
-    "tooltip-format": "{:L%d %m %Y, %A}"
+    "tooltip-format": "{:L%A %d de %B del %Y}"
   },
   "tray": {
     "icon-size": 15,
     "spacing": 6
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "<span color='#FFD700'>{icon}</span>{percent}% ",
-    "tooltip": true,
-    "tooltip-format": "Brillo: {percent}%",
-    "format-icons": [
-      "<span color='#696969'>󰃞  </span>",
-      "<span color='#A9A9A9'>󰃝  </span>",
-      "<span color='#FFFF66'>󰃟  </span>",
-      "<span color='#FFD700'>󰃠  </span>"
-    ]
   },
   "bluetooth": {
     "format": "<span color='#00BFFF'>󰂯 </span>{status} ",
@@ -187,5 +158,12 @@
     "on-click-middle": "swaync-client -C",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
-  }
+  },
+    "custom/hyprsunset": {
+    	"exec": "~/.config/waybar/scripts/hyprsunset.sh",
+        "interval": 60,
+        "return-type": "json",
+        "tooltip": true,
+        "tooltip-format": "Hyprsunset Status"
+    }
 }
