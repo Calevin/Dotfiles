@@ -1,0 +1,28 @@
+[opener]
+edit = [{ run = 'nvim "$@"', block = true }]
+
+[open]
+rules = [
+    { name = "*/", use = [ "edit", "open", "reveal" ] },
+
+    { mime = "text/*",  use = [ "text", "edit", "reveal" ] },
+    { mime = "image/*", use = [ "open", "reveal" ] },
+    { mime = "video/*", use = [ "play", "reveal" ] },
+    { mime = "audio/*", use = [ "play", "reveal" ] },
+    { mime = "inode/x-empty", use = [ "edit", "reveal" ] },
+
+    { mime = "application/json", use = [ "edit", "reveal" ] },
+    { mime = "*/javascript",     use = [ "edit", "reveal" ] },
+    { mime = "application/pdf",  use = [ "pdf" ] },
+
+    { mime = "application/zip",             use = [ "extract", "reveal" ] },
+    { mime = "application/gzip",            use = [ "extract", "reveal" ] },
+    { mime = "application/x-tar",           use = [ "extract", "reveal" ] },
+    { mime = "application/x-bzip",          use = [ "extract", "reveal" ] },
+    { mime = "application/x-bzip2",         use = [ "extract", "reveal" ] },
+    { mime = "application/x-7z-compressed", use = [ "extract", "reveal" ] },
+    { mime = "application/x-rar",           use = [ "extract", "reveal" ] },
+    { mime = "application/xz",              use = [ "extract", "reveal" ] },
+
+    { mime = "*", use = [ "open", "reveal" ] },
+]
