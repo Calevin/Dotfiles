@@ -12,6 +12,7 @@ alias fzfpreview="rg --files-with-matches '' | fzf --preview '/usr/bin/batcat --
 alias refreshmirrors='reflector --latest 10 --protocol https --sort rate | sudo tee /etc/pacman.d/mirrorlist'
 alias codium='/usr/bin/codium --ozone-platform=wayland'
 alias killwaybar='killall waybar && waybar & disown'
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 alias noche='nohup hyprsunset --gamma 100 --gamma_max 100 --temperature 3300 >/dev/null 2>&1 &'
 #alias y=yazi
 alias ls='exa --icons --color=always'
