@@ -126,7 +126,8 @@
     "timezone": "America/Argentina/Buenos_Aires",
     "format": " <span color='#8CF8F7'>   </span>{:L%d/%m/%Y %H:%M} ",
     "tooltip": true,
-    "tooltip-format": "{:L%A %d de %B del %Y}"
+    "tooltip-format": "{:L%A %d de %B del %Y}",
+    "on-click": "lvsk-calendar-launcher"
   },
   "tray": {
     "icon-size": 15,
