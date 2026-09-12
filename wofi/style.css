@@ -1,0 +1,66 @@
+* {
+   font-family: 'JetBrains Mono Nerd Font', monospace;
+   font-size: 14px;
+}
+
+/* Ventana principal */
+window {
+  margin: 0px;
+  border: 2px solid #586e75; /* base01: Borde sutil */
+  /* border-radius: 6px; */
+  /* background-color: #002b36; base03: Fondo oscuro principal */
+  background-color: rgba(0, 43, 54, 0.75);
+  font-family: "monospace", sans-serif;
+  font-size: 14px;
+}
+
+/* Contenedor de la barra de búsqueda */
+#input {
+  margin: 10px;
+  border: 1px solid #073642; /* base02 */
+  /* border-radius: 4px; */
+  padding: 10px;
+  background-color: #073642; /* base02: Fondo de la caja de texto */
+  color: #93a1a1; /* base1: Texto secundario/brillante */
+}
+
+#input:focus {
+  border: 1px solid #268bd2; /* blue: Resaltado al enfocar */
+}
+
+/* Contenedor de los resultados */
+#scroll {
+  margin: 5px;
+}
+
+/* Cada fila o elemento de la lista */
+#entry {
+  padding: 10px;
+  color: #839496; /* base0: Texto por defecto */
+}
+
+/* Elemento seleccionado actualmente */
+#entry:selected {
+  background-color: #073642; /* base02: Resaltado sutil de fondo */
+  color: #2aa198; /* cyan: Texto seleccionado para contraste cómodo */
+  /* border-radius: 4px; */
+}
+
+/* Texto dentro de los elementos */
+#text {
+  margin: 6px;
+}
+
+#text:selected {
+  color: #2aa198; /* cyan */
+}
+
+#expander-box {
+    background-color: rgba(40, 42, 54, 0.8);
+    border-radius: 4px;
+    padding: 5px;
+}
+
+expander > list > #entry {
+    color: #2aa198;
+}

@@ -1,0 +1,12 @@
+allow_images=true
+always_parse_args=true
+height=600
+hide_scroll=true
+image_size=20
+insensitive=true
+key_expand=Tab
+print_command=true
+prompt=Buscar aplicaciones...
+show=drun
+show_all=false
+width=300
