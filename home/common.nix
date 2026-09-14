@@ -73,6 +73,8 @@
     wireplumber
     libnotify
     playerctl
+    just
+    lsd
   ];
 
   home.pointerCursor = {
@@ -141,6 +143,11 @@
   };
 
   services.hyprsunset.enable = true;
+
+  # Optimización automática del Nix Store
+  # Esto optimiza los archivos cada vez que se hace un build,
+  # evitando tener que correr 'nix store optimise' de forma manual.
+  nix.settings.auto-optimise-store = true;
 
   # Permitir a Home Manager gestionar su propia instalacion
   programs.home-manager.enable = true;

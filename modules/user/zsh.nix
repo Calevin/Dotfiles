@@ -11,15 +11,19 @@
 
     # Custom aliases
     shellAliases = {
-      ll = "ls -l";
-      mi_test = "echo 'MI TEST 1'";
-      recrear = "sudo nixos-rebuild switch --flake /home/calevin/nixos-config#nixos-barata";
-      actualizar = "nix flake update";
-      mi_ip = "ip -br a";
-      noche = "hyprctl hyprsunset temperature 4500 >/dev/null 2>&";
+      ll = "lsd -lh --group-dirs=first";
+      la = "lsd -a --group-dirs=first";
+      l = "lsd --group-dirs=first";
+      lla = "lsd -lha --group-dirs=first";
+      ls = "lsd --group-dirs=first";
+      copiar_pwd="pwd | tr -d \"\n\" | wl-copy";
+      al_portapapeles="wl-copy";
+      mi_ip = "ip -4 addr show";
+      el_pronostico = "curl 'wttr.in/san%20miguel,%20buenos%20aires?M&lang=es'";
+      noche = "hyprctl hyprsunset temperature 4500 >/dev/null 2>&1";
       dia = "hyprctl hyprsunset temperature 6500 >/dev/null 2>&1";
       o = "xdg-open";
-      fzfpreview = "rg --files-with-matches '' | fzf --preview '/etc/profiles/per-user/calevin/bin/bat --style=numbers --color=always {}'";
+      preview_fzf = "rg --files-with-matches '' | fzf --preview '/etc/profiles/per-user/calevin/bin/bat --style=numbers --color=always {}'";
     };
 
     # Inyectar funciones personalizadas en .zshrc

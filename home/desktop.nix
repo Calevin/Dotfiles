@@ -18,6 +18,24 @@
     meld
   ];
 
+  home.file."Github/Dotfiles/.justfile".text = ''
+    # Default recipe to list available commands
+    default:
+        @just --list
+
+    # Checkear
+    checkear:
+        nix flake check
+
+    # Rebuild and switch the NixOS system configuration
+    recrear:
+        git add . && sudo nixos-rebuild switch --flake .#nixos-desktop
+
+    # Update all flake inputs to their latest versions
+    actualizar:
+        nix flake update
+  '';
+
   # Configuración declarativa del navegador zen
   programs.zen-browser = {
     enable = true;
