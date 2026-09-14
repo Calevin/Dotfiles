@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./user/scripts/quickshell-stats.nix
+    ./scripts/quickshell-stats-notebook.nix
   ];
+
   # Instalamos el paquete de quickshell
   home.packages = [ pkgs.quickshell ];
 
@@ -87,10 +88,10 @@
                 color: root.colWhite
         }
 
-        // Instancia unica atada exclusivamente al monitor HDMI-A-3
+        // Instancia unica atada exclusivamente al monitor eDP-1
         PanelWindow {
             // Busca la pantalla por nombre de forma reactiva
-            screen: Quickshell.screens.find(s => s.name === "HDMI-A-3") ?? null
+            screen: Quickshell.screens.find(s => s.name === "eDP-1") ?? null
 
             // Se muestra solo si la pantalla fue encontrada en el compositor
             visible: screen !== null

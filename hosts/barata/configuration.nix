@@ -19,7 +19,11 @@
       ../../modules/system/nix-ld.nix
     ];
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+
+  # Habilitar GRUB y apuntarlo al disco principal (MBR)
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "nixos-barata";
 

@@ -2,6 +2,10 @@
 { pkgs, inputs, ... }:
 
 {
+  imports = [
+    ./scripts/quickshell-stats.nix
+  ];
+
   # Instalamos el paquete de quickshell
   home.packages = [ pkgs.quickshell ];
 

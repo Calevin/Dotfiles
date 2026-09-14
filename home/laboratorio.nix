@@ -3,7 +3,7 @@
 {
   imports = [
     ./common.nix
-    ../modules/quickshell_notebook.nix
+    ../modules/user/quickshell_notebook.nix
   ];
 
   # Instalar paquetes de usuario
