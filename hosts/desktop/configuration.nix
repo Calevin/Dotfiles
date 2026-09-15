@@ -70,6 +70,15 @@
     #];
   };
 
+  # Origen: https://github.com/Sly-Harvey/NixOS/raw/358f3a356979ea55e9b101f41859a6609bc87766/modules/core/services.nix
+  # SSD Optimizer
+  services.fstrim.enable = true;
+  # Instala la interfaz gráfica y el icono para controlarlo
+  services.blueman.enable = true;
+
+  # Enciende el hardware y los drivers de Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;

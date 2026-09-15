@@ -86,7 +86,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Habilitar Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
