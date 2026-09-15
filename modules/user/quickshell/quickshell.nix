@@ -3,6 +3,7 @@
 {
   imports = [
     ../scripts/quickshell-stats.nix
+    ../scripts/quickshell-media-stats.nix
     ./quickshell_separador.nix
     ./quickshell_seccion_izq.nix
     ./quickshell_seccion_centro.nix
