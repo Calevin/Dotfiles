@@ -73,7 +73,9 @@
         style = "bg:#1e90ff fg:#000000";
         format = "[ $path ]($style)";
         truncation_length = 3;
-        truncation_symbol = "…/";
+        # truncation_symbol = "…/";
+        truncate_to_repo = false;
+        read_only = " ro";
       };
 
       git_branch = {
@@ -82,14 +84,19 @@
         format = "[ $symbol$branch ]($style)";
       };
 
+      git_state = {
+        format = ''\([$state( $progress_current/$progress_total)]($style)\) '';
+        style = "bg:#2ecc71 fg:#000000";
+      };
+
       git_status = {
         style = "bg:#2ecc71 fg:#000000";
-        format = "[$all_status$ahead_behind ]($style)";
+        format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)]($style)($ahead_behind$stashed)]($style)";
       };
 
       character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[✗](bold red)";
+        success_symbol = "[❯](bold green)";
+        error_symbol = "[☠ ❯](bold red)";
       };
     };
   };
