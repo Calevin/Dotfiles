@@ -6,7 +6,7 @@
     ../modules/user/hyprland.nix
     ../modules/user/mako.nix
     ../modules/user/wofi.nix
-    ../modules/user/quickshell.nix
+    ../modules/user/quickshell/quickshell.nix
     ../modules/user/kitty.nix
     inputs.zen-browser.homeModules.default
   ];
@@ -25,7 +25,7 @@
 
     # Checkear
     checkear:
-        nix flake check
+        git add . && nix flake check
 
     # Rebuild and switch the NixOS system configuration
     recrear:
