@@ -9,6 +9,14 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    envExtra = ''
+      # Paleta Solarized Dark para fzf
+      export FZF_DEFAULT_OPTS=" \
+        --color=bg+:#073642,bg:#002b36,spinner:#859900,hl:#b58900 \
+        --color=fg:#839496,header:#586e75,info:#2aa198,pointer:#268bd2 \
+        --color=marker:#2aa198,fg+:#93a1a1,prompt:#268bd2,hl+:#cb4b16"
+    '';
+
     # Custom aliases
     shellAliases = {
       ll = "lsd -lh --group-dirs=first";
@@ -16,6 +24,13 @@
       l = "lsd --group-dirs=first";
       lla = "lsd -lha --group-dirs=first";
       ls = "lsd --group-dirs=first";
+      # Algunas cosas basadas en
+      # https://github.com/Sly-Harvey/NixOS/raw/refs/heads/master/modules/core/zsh.nix
+      cp = "cp -iv";
+      mv = "mv -iv";
+      rm = "rm -vI";
+      mkd = "mkdir -pv";
+      grep = "grep --color=always";
       copiar_pwd="pwd | tr -d \"\n\" | wl-copy";
       al_portapapeles="wl-copy";
       mi_ip = "ip -4 addr show";
