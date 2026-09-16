@@ -128,6 +128,7 @@
       hl.exec_cmd("quickshell")
       hl.exec_cmd("mako")
       hl.exec_cmd("clipse -listen")
+      hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
     end)
 
     -- =========================================================================

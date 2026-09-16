@@ -83,6 +83,12 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  # Habilita el servicio de gnome-keyring
+  services.gnome.gnome-keyring.enable = true;
+
+  # Asegura la integracion con PAM.
+  security.pam.services.login.enableGnomeKeyring = true;
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true; # Enabled by default, but explicit if needed
