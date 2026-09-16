@@ -20,6 +20,7 @@
     ../modules/user/zsh.nix
     ../modules/user/hyprland.nix
     ../modules/user/hyprpaper.nix
+    ../modules/user/hyprlock.nix
     ../modules/user/mako.nix
     ../modules/user/wofi.nix
     ../modules/user/kitty.nix

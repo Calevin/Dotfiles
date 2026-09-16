@@ -147,6 +147,7 @@
     hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
     hl.bind("SUPER + E ", hl.dsp.exec_cmd("gnome-text-editor"))
     hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("kitty --title kitty-clipse -e clipse"))
+    hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
     -- Screenshots
     hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region -o " .. os.getenv("HOME") .. "/Imágenes/Screenshots"))
