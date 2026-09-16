@@ -35,7 +35,7 @@ let
           disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
 
           # 4. Volumen y estado Mute (wpctl)
-          vol_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+          vol_info=$(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
           # Fuerza locale C para correcta interpretacion del punto decimal
           vol_percent=$(echo "$vol_info" | LC_ALL=C awk '{print int($2 * 100)}')
