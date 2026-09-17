@@ -140,11 +140,6 @@
     saveLocation = "$HOME/Imágenes/Screenshots";
   };
 
-  services.clipse = {
-    enable = true;
-    systemdTarget = "hyprland-session.target";
-  };
-
   services.hyprsunset.enable = true;
 
   # Optimización automática del Nix Store
