@@ -21,6 +21,7 @@
     ../modules/user/hyprland.nix
     ../modules/user/hyprpaper.nix
     ../modules/user/hyprlock.nix
+    ../modules/user/hyprsunset.nix
     ../modules/user/mako.nix
     ../modules/user/wofi.nix
     ../modules/user/kitty.nix
@@ -139,8 +140,6 @@
     package = pkgs.hyprshot;
     saveLocation = "$HOME/Imágenes/Screenshots";
   };
-
-  services.hyprsunset.enable = true;
 
   # Optimización automática del Nix Store
   # Esto optimiza los archivos cada vez que se hace un build,

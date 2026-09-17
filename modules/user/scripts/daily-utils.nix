@@ -160,16 +160,11 @@ let
   '';
   # Script para cambiar el modo dia y noche
   sebaSunset = pkgs.writeShellScriptBin "seba_sunset" ''
-        # Definicion de colores ANSI Truecolor para el encabezado
-        COLOR_CYAN='\033[38;2;42;161;152m'
-        COLOR_BLUE='\033[38;2;38;139;210m'
-        COLOR_RESET='\033[0m'
-
         TEMP_DAY="6500"
         TEMP_NIGHT="4200"
 
         get_current_temp() {
-            hyprctl hyprsunset temperature 2>/dev/null | tr -d '[:space:]'
+            hyprctl ${pkgs.hyprsunset}/bin/hyprsunset temperature 2>/dev/null | tr -d '[:space:]'
         }
 
         get_mode_label() {
@@ -183,26 +178,7 @@ let
 
         apply_temp() {
             local target_temp="$1"
-            hyprctl hyprsunset temperature "$target_temp" >/dev/null 2>&1
-        }
-
-        print_header() {
-            local text="Temperatura actual es $1 ($2)"
-            # Calcula el ancho del borde basandose en la longitud del texto mas el relleno
-            local width=$((''${#text} + 2))
-
-            # Borde superior redondeado
-            printf "''${COLOR_BLUE}╭"
-            for ((i=0; i<width; i++)); do printf "─"; done
-            printf "╮''${COLOR_RESET}\n"
-
-            # Contenido del encabezado
-            printf "''${COLOR_BLUE}│ ''${COLOR_CYAN}%s''${COLOR_BLUE} │''${COLOR_RESET}\n" "$text"
-
-            # Borde inferior redondeado
-            printf "''${COLOR_BLUE}╰"
-            for ((i=0; i<width; i++)); do printf "─"; done
-            printf "╯''${COLOR_RESET}\n\n"
+            hyprctl ${pkgs.hyprsunset}/bin/hyprsunset temperature "$target_temp" >/dev/null 2>&1
         }
 
         main() {
@@ -215,12 +191,10 @@ let
                 local current_temp
                 local mode_label
                 local choice
+                local header
 
                 current_temp=$(get_current_temp)
                 mode_label=$(get_mode_label "$current_temp")
-
-                clear
-                print_header "$current_temp" "$mode_label"
 
                 # fzf configurado con la paleta de colores Solarized Dark exacta
                 choice=$(printf "Dia\nNoche\nSalir" | ${pkgs.fzf}/bin/fzf \
@@ -228,7 +202,8 @@ let
                     --color="fg:#657b83,bg+:#073642,fg+:#268bd2,prompt:#2aa198,pointer:#2aa198,hl:#b58900,hl+:#cb4b16" \
                     --height=10 \
                     --layout=reverse \
-                    --border=none \
+                    --border \
+                    --border-label="Temperatura actual es $current_temp (Modo: $mode_label)"
                     --info=hidden)
 
                 case "$choice" in
