@@ -24,6 +24,7 @@
     ../modules/user/mako.nix
     ../modules/user/wofi.nix
     ../modules/user/kitty.nix
+    ../modules/user/clipse.nix
     ../modules/user/scripts/daily-utils.nix
   ];
 
@@ -76,6 +77,7 @@
     playerctl
     just
     lsd
+    joplin-desktop
   ];
 
   home.pointerCursor = {
