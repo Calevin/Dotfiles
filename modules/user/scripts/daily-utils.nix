@@ -3,24 +3,19 @@
 let
   # Script para administrar los DNS
   cambiarDns = pkgs.writeShellScriptBin "cambiar_dns" ''
-        # Definicion de colores ANSI Truecolor para el encabezado
-        COLOR_CYAN='\033[38;2;42;161;152m'
-        COLOR_BLUE='\033[38;2;38;139;210m'
-        COLOR_RESET='\033[0m'
-
         get_active_connection() {
             # Obtener la interfaz de red activa excluyendo conexiones irrelevantes
-            nmcli -t -f NAME,TYPE connection show --active | grep -E 'ethernet|wireless' | head -n 1 | cut -d: -f1
+            ${pkgs.networkmanager}/bin/nmcli -t -f NAME,TYPE connection show --active | grep -E 'ethernet|wireless' | head -n 1 | cut -d: -f1
         }
 
         get_current_dns() {
             local con_name="$1"
             local ignore_auto
 
-            ignore_auto=$(nmcli -g ipv4.ignore-auto-dns connection show "$con_name")
+            ignore_auto=$(${pkgs.networkmanager}/bin/nmcli -g ipv4.ignore-auto-dns connection show "$con_name")
 
             local dns_list
-            dns_list=$(nmcli -g ipv4.dns connection show "$con_name")
+            dns_list=$(${pkgs.networkmanager}/bin/nmcli -g ipv4.dns connection show "$con_name")
 
             # Si el flag de ignorar DNS automatico es falso y no hay configuracion manual
             if [[ "$ignore_auto" == "no" ]] && [[ -z "$dns_list" ]]; then
@@ -55,60 +50,30 @@ let
 
             case "$option" in
                 "Cloudflare")
-                    nmcli connection modify "$con_name" ipv4.dns "1.1.1.1 1.0.0.1"
-                    nmcli connection modify "$con_name" ipv4.ignore-auto-dns yes
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.dns "1.1.1.1 1.0.0.1"
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.ignore-auto-dns yes
                     ;;
                 "Google")
-                    nmcli connection modify "$con_name" ipv4.dns "8.8.8.8 8.8.4.4"
-                    nmcli connection modify "$con_name" ipv4.ignore-auto-dns yes
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.dns "8.8.8.8 8.8.4.4"
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.ignore-auto-dns yes
                     ;;
                 "Adguard")
-                    nmcli connection modify "$con_name" ipv4.dns "94.140.14.14 94.140.15.15"
-                    nmcli connection modify "$con_name" ipv4.ignore-auto-dns yes
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.dns "94.140.14.14 94.140.15.15"
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.ignore-auto-dns yes
                     ;;
                 "DHCP")
-                    nmcli connection modify "$con_name" ipv4.ignore-auto-dns no
-                    nmcli connection modify "$con_name" ipv4.dns ""
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.ignore-auto-dns no
+                    ${pkgs.networkmanager}/bin/nmcli connection modify "$con_name" ipv4.dns ""
                     ;;
             esac
 
             # Reiniciar la conexion para aplicar los cambios sin emitir salida en pantalla
-            nmcli connection up "$con_name" >/dev/null 2>&1
+            ${pkgs.networkmanager}/bin/nmcli connection up "$con_name" >/dev/null 2>&1
         }
 
         print_header() {
             local line1="Conexion activa: $1"
             local line2="DNS Actual: $2"
-
-            # Calcular el ancho basado en la linea mas larga
-            local width=''${#line1}
-            if [[ ''${#line2} -gt $width ]]; then
-                width=''${#line2}
-            fi
-
-            width=$((width + 2))
-
-            # Borde superior redondeado
-            printf "''${COLOR_BLUE}╭"
-            for ((i=0; i<width; i++)); do printf "─"; done
-            printf "╮''${COLOR_RESET}\n"
-
-            # Contenido linea 1
-            local pad1=$((width - 2 - ''${#line1}))
-            printf "''${COLOR_BLUE}│ ''${COLOR_CYAN}%s" "$line1"
-            for ((i=0; i<pad1; i++)); do printf " "; done
-            printf "''${COLOR_BLUE} │''${COLOR_RESET}\n"
-
-            # Contenido linea 2
-            local pad2=$((width - 2 - ''${#line2}))
-            printf "''${COLOR_BLUE}│ ''${COLOR_CYAN}%s" "$line2"
-            for ((i=0; i<pad2; i++)); do printf " "; done
-            printf "''${COLOR_BLUE} │''${COLOR_RESET}\n"
-
-            # Borde inferior redondeado
-            printf "''${COLOR_BLUE}╰"
-            for ((i=0; i<width; i++)); do printf "─"; done
-            printf "╯''${COLOR_RESET}\n\n"
         }
 
         main() {
@@ -130,22 +95,18 @@ let
                 local current_dns
                 current_dns=$(get_current_dns "$con_name")
 
-                clear
-                print_header "$con_name" "$current_dns"
-
                 local choice
                 choice=$(printf "Cloudflare\nGoogle\nAdguard\nDHCP\nSalir" | ${pkgs.fzf}/bin/fzf \
-                    --prompt="Cambiar DNS a: > " \
+                    --prompt="Cambiar DNS a: " \
                     --color="fg:#657b83,bg+:#073642,fg+:#268bd2,prompt:#2aa198,pointer:#2aa198,hl:#b58900,hl+:#cb4b16" \
                     --height=11 \
                     --layout=reverse \
-                    --border=none \
+                    --border \
+                    --border-label="DNS Actual: $current_dns - Conexion activa: $con_name" \
                     --info=hidden)
 
                 case "$choice" in
                     "Cloudflare"|"Google"|"Adguard"|"DHCP")
-                        # Mostrar mensaje de feedback visual
-                        printf "\n''${COLOR_CYAN}Cambiando DNS a %s...''${COLOR_RESET}\n" "$choice"
                         apply_dns "$con_name" "$choice"
                         ;;
                     "Salir"|"")
@@ -203,7 +164,7 @@ let
                     --height=10 \
                     --layout=reverse \
                     --border \
-                    --border-label="Temperatura actual es $current_temp (Modo: $mode_label)"
+                    --border-label="Temperatura actual es $current_temp (Modo: $mode_label)" \
                     --info=hidden)
 
                 case "$choice" in
