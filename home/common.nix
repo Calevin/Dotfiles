@@ -19,6 +19,7 @@
   imports = [
     ../modules/user/zsh.nix
     ../modules/user/fzf.nix
+    ../modules/user/fd.nix
     ../modules/user/hyprland.nix
     ../modules/user/hyprpaper.nix
     ../modules/user/hyprlock.nix
@@ -39,6 +40,9 @@
     zsh-autosuggestions
     bat
     fzf
+    tree # Command to produce a depth indented directory listing.
+    fd # Simple, fast and user-friendly alternative to find.
+    handlr-regex # Fork of handlr (Alternative to xdg-open) with support for regex
     zoxide
     btop
     fastfetch

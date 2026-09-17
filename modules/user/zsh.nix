@@ -29,8 +29,7 @@
       el_pronostico = "curl 'wttr.in/san%20miguel,%20buenos%20aires?M&lang=es'";
       noche = "hyprctl hyprsunset temperature 4500 >/dev/null 2>&1";
       dia = "hyprctl hyprsunset temperature 6500 >/dev/null 2>&1";
-      o = "xdg-open";
-      preview_fzf = "rg --files-with-matches '' | fzf --preview '/etc/profiles/per-user/calevin/bin/bat --style=numbers --color=always {}'";
+      o = "handlr open";
     };
 
     # Inyectar funciones personalizadas en .zshrc
