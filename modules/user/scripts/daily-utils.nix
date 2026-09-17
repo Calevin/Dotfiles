@@ -98,7 +98,6 @@ let
                 local choice
                 choice=$(printf "Cloudflare\nGoogle\nAdguard\nDHCP\nSalir" | ${pkgs.fzf}/bin/fzf \
                     --prompt="Cambiar DNS a: " \
-                    --color="fg:#657b83,bg+:#073642,fg+:#268bd2,prompt:#2aa198,pointer:#2aa198,hl:#b58900,hl+:#cb4b16" \
                     --height=11 \
                     --layout=reverse \
                     --border \
@@ -160,7 +159,6 @@ let
                 # fzf configurado con la paleta de colores Solarized Dark exacta
                 choice=$(printf "Dia\nNoche\nSalir" | ${pkgs.fzf}/bin/fzf \
                     --prompt="Cambiar a: " \
-                    --color="fg:#657b83,bg+:#073642,fg+:#268bd2,prompt:#2aa198,pointer:#2aa198,hl:#b58900,hl+:#cb4b16" \
                     --height=10 \
                     --layout=reverse \
                     --border \

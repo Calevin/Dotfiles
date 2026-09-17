@@ -18,6 +18,7 @@
 
   imports = [
     ../modules/user/zsh.nix
+    ../modules/user/fzf.nix
     ../modules/user/hyprland.nix
     ../modules/user/hyprpaper.nix
     ../modules/user/hyprlock.nix

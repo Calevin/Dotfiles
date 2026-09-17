@@ -9,14 +9,6 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    envExtra = ''
-      # Paleta Solarized Dark para fzf
-      export FZF_DEFAULT_OPTS=" \
-        --color=bg+:#073642,bg:#002b36,spinner:#859900,hl:#b58900 \
-        --color=fg:#839496,header:#586e75,info:#2aa198,pointer:#268bd2 \
-        --color=marker:#2aa198,fg+:#93a1a1,prompt:#268bd2,hl+:#cb4b16"
-    '';
-
     # Custom aliases
     shellAliases = {
       ll = "lsd -lh --group-dirs=first";
