@@ -23,7 +23,10 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    consoleMode = "max";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos-desktop";
