@@ -6,7 +6,13 @@
 
     # Native Home Manager modules (faster than OMZ plugins)
     enableCompletion = true;
-    autosuggestion.enable = true;
+    autosuggestion = {
+      enable = true;
+      strategy = [
+        "completion"
+        "history"
+      ];
+    };
     syntaxHighlighting.enable = true;
 
     # Custom aliases

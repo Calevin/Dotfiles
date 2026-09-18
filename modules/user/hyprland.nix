@@ -124,7 +124,6 @@
     -- AUTOSTART: Evento oficial de inicio asíncrono
     -- =========================================================================
     hl.on("hyprland.start", function()
-      hl.exec_cmd("nm-applet --indicator")
       hl.exec_cmd("quickshell")
       hl.exec_cmd("mako")
       hl.exec_cmd("clipse -listen")
@@ -148,7 +147,7 @@
     hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
     hl.bind("SUPER + E ", hl.dsp.exec_cmd("gnome-text-editor"))
     hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("kitty --title kitty-clipse -e clipse"))
-    hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+    hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock --grace 5"))
 
     -- Screenshots
     hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region -o " .. os.getenv("HOME") .. "/Imágenes/Screenshots"))

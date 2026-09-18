@@ -21,9 +21,12 @@
     ../modules/user/fzf.nix
     ../modules/user/fd.nix
     ../modules/user/hyprland.nix
+    ../modules/user/looknfeel.nix
     ../modules/user/hyprpaper.nix
     ../modules/user/hyprlock.nix
     ../modules/user/hyprsunset.nix
+    ../modules/user/hyprshot.nix
+    ../modules/user/zoxide.nix
     ../modules/user/mako.nix
     ../modules/user/wofi.nix
     ../modules/user/kitty.nix
@@ -47,14 +50,12 @@
     btop
     fastfetch
     duf
-    eza
     nerd-fonts.jetbrains-mono
     gnomeExtensions.clipboard-history
     gnome-tweaks
-    nautilus-open-any-terminal
+    nautilus-open-any-terminal # Extension for nautilus, which adds an context-entry for opening other terminal-emulators then `gnome-terminal`
     manuskript
     focuswriter
-    ripgrep
     ripgrep-all # Ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, and more
     zathura
     kitty
@@ -77,74 +78,16 @@
     jq
     github-desktop
     lazygit
-    networkmanagerapplet
-    wireplumber
-    libnotify
-    playerctl
+    wireplumber # Modular session / policy manager for PipeWire
+    libnotify # Library that sends desktop notifications to a notification daemon (notify-send)
+    playerctl # Command-line utility and library for controlling media players that implement MPRIS
     just
     lsd
     joplin-desktop
   ];
 
-  home.pointerCursor = {
-    enable = true;
-    name = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors;
-    size = 24;
-    gtk.enable = true;
-    x11.enable = true;
-  };
-
-  home.sessionVariables = {
-      XCURSOR_THEME = "Bibata-Modern-Ice";
-      XCURSOR_SIZE = "24";
-      HYPRCURSOR_THEME = "Bibata-Modern-Ice";
-      HYPRCURSOR_SIZE = "24";
-  };
-
-  # gtk-application-prefer-dark-theme = 1
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
-
-  dconf.settings = {
-    # Quitar botones de las ventanas
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = ":";
-    };
-    # gtk-application-prefer-dark-theme = 1
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
   # Sirve para habilitar la gestión declarativa de los directorios base XDG (como ~/.config, ~/.cache y ~/.local/share)
   xdg.enable = true;
-
-  # Habilitar fzf y su integracion nativa con Zsh
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true; # Esto configura Ctrl+R automaticamente
-  };
-
-  programs.zoxide.enable = true;
-  programs.zoxide.enableZshIntegration = true;
-
-  programs.hyprshot = {
-    enable = true;
-    package = pkgs.hyprshot;
-    saveLocation = "$HOME/Imágenes/Screenshots";
-  };
 
   # Optimización automática del Nix Store
   # Esto optimiza los archivos cada vez que se hace un build,

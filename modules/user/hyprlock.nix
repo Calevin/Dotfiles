@@ -9,8 +9,19 @@
       general = {
         disable_loading_bar = true;
         hide_cursor = true;
-        no_fade_in = false;
-        grace = 0;
+        ignore_empty_input = true;
+      };
+
+      animations = {
+        enabled = true;
+        fade_in = {
+          duration = 300;
+          bezier = "easeOutQuint";
+        };
+        fade_out = {
+          duration = 300;
+          bezier = "easeOutQuint";
+        };
       };
 
       background = [
