@@ -182,8 +182,22 @@ let
 
         main "$@"
   '';
+  # Script para buscar procesos con fzf y matarlos
+  fzfKill = pkgs.writeShellScriptBin "fkill" ''
+      main() {
+          local selection
+          selection=$(ps -o pid,fuser,fname,cmd a | ${pkgs.fzf}/bin/fzf)
+          local pid=$(echo "$selection" | awk '{print $1}')
+          local pname=$(echo "$selection" | awk '{print $5}')
+          if [ "$pid" != "" ]; then
+              kill -9 "$pid" > /dev/null 2>&1 && echo "Process $pname (PID $pid) has been successfully killed."
+          fi
+      }
+
+      main "$"
+  '';
 in
 {
   # Agrega el script al PATH del usuario
-  home.packages = [ cambiarDns sebaSunset ];
+  home.packages = [ cambiarDns sebaSunset fzfKill];
 }
