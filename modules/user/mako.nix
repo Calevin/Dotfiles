@@ -9,7 +9,6 @@
     settings = {
       # Configuración general de la interfaz y comportamiento
       output="HDMI-A-3";
-      font = "JetBrainsMono Nerd Font 12";
       width = 400;
       height = 220;
       margin = "10,10";
@@ -19,20 +18,11 @@
       default-timeout = 15000; # Tiempo en milisegundos (15 segundos)
       group-by = "category";
       max-history=20;
-
-      # Colores del tema
-      background-color = "#002B36";
-      text-color = "#839496";
-      border-color = "#33ccfe";
-      progress-color = "over #00ff99ee";
     };
 
     # Configuraciones específicas por niveles de urgencia
     extraConfig = ''
       [urgency=high]
-      background-color=#002B36
-      text-color=#CB4B16
-      border-color=#DC322F
       default-timeout=0
 
       [category=mpd]

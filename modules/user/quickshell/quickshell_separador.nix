@@ -12,7 +12,7 @@
       Layout.alignment: Qt.AlignVCenter
       Layout.leftMargin: 2
       Layout.rightMargin: 8
-      color: root.colWhite
+      color: root.colFg
     }
     '';
 }

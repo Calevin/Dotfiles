@@ -56,7 +56,7 @@
 
                 Text {
                     text: index + 1
-                    color: parent.isActive ? root.colWhite : (parent.hasWindows ? root.colCyan : root.colMuted)
+                    color: parent.isActive ? root.colFg : (parent.hasWindows ? root.colCyan : root.colMuted)
                     font.pixelSize: root.fontSize
                     font.family: root.fontFamily
                     font.bold: true
@@ -66,7 +66,7 @@
                 Rectangle {
                     width: 20
                     height: 3
-                    color: parent.isActive ? root.colWhite : root.colBg
+                    color: parent.isActive ? root.colFg : root.colBg
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.bottom
                 }
@@ -83,7 +83,7 @@
         // Titulo ventana activa
         Text {
             text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "Workspace"
-            color: root.colWhite
+            color: root.colFg
             font.pixelSize: root.fontSize
             font.family: root.fontFamily
             font.bold: true

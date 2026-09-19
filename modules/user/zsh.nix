@@ -9,8 +9,8 @@
     autosuggestion = {
       enable = true;
       strategy = [
-        "completion"
         "history"
+        "completion"
       ];
     };
     syntaxHighlighting.enable = true;

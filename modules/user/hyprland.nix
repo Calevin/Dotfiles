@@ -141,7 +141,7 @@
     hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(terminal))
     hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd("kitty --title float_term"))
     hl.bind("SUPER + Q", hl.dsp.window.close())
-    hl.bind("SUPER + M", hl.dsp.exit())
+    hl.bind("SUPER + M", hl.dsp.exec_cmd("hyprshutdown"))
     hl.bind("SUPER + N", hl.dsp.exec_cmd("nautilus"))
     hl.bind("SUPER + V", hl.dsp.window.float({ action = "toggle" }))
     hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))

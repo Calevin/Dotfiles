@@ -27,7 +27,7 @@
         property color colFg: "#a9b1d6"
         property color colMuted: "#444b6a"
         property color colCyan: "#0db9d7"
-        property color colWhite: "#e6e7f2"
+        property color colFg: "#e6e7f2"
         property color colRed: "#f7768e"
 
         // Font

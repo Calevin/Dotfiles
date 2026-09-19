@@ -6,12 +6,12 @@
       settings = {
           splash = false;
           preload = [
-            "${inputs.self}/assets/wallpapers/ethereal-wallpaper.webp"
+            "${inputs.self}/assets/wallpapers/solarized-wallpaper.jpg"
           ];
           wallpaper = [
               {
                   monitor = "";
-                  path = "${inputs.self}/assets/wallpapers/ethereal-wallpaper.webp";
+                  path = "${inputs.self}/assets/wallpapers/solarized-wallpaper.jpg";
               }
           ];
       };

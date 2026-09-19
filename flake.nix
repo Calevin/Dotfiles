@@ -18,9 +18,14 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, zen-browser, stylix, ... }@inputs: {
     nixosConfigurations = {
       # 'nixos-desktop' es el hostname
       nixos-desktop = nixpkgs.lib.nixosSystem {
@@ -29,6 +34,7 @@
         modules = [
           ./hosts/desktop/hardware-configuration.nix
           ./hosts/desktop/configuration.nix
+          stylix.nixosModules.stylix
 
           # Integracion de Home Manager como modulo del sistema
           home-manager.nixosModules.home-manager
@@ -49,6 +55,7 @@
         modules = [
           ./hosts/barata/hardware-configuration.nix
           ./hosts/barata/configuration.nix
+          stylix.nixosModules.stylix
 
           # Integracion de Home Manager como modulo del sistema
           home-manager.nixosModules.home-manager

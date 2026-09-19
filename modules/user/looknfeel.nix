@@ -1,45 +1,21 @@
 { pkgs, ... }:
 
 {
-  home.pointerCursor = {
-    enable = true;
-    name = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors;
-    size = 24;
-    gtk.enable = true;
-    x11.enable = true;
-  };
 
-  home.sessionVariables = {
-      XCURSOR_THEME = "Bibata-Modern-Ice";
-      XCURSOR_SIZE = "24";
-      HYPRCURSOR_THEME = "Bibata-Modern-Ice";
-      HYPRCURSOR_SIZE = "24";
-  };
+  stylix.targets.zen-browser.enable = false;
 
-  # gtk-application-prefer-dark-theme = 1
   gtk = {
-    enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
+      enable = true;
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus-Dark";
+      };
   };
 
   dconf.settings = {
     # Quitar botones de las ventanas
     "org/gnome/desktop/wm/preferences" = {
       button-layout = ":";
-    };
-    # gtk-application-prefer-dark-theme = 1
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
     };
   };
 }

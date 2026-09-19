@@ -55,7 +55,7 @@
         Text {
             visible: isStatsVisible
             text: "CPU: " + cpuUsage + "%"
-            color: root.colWhite
+            color: root.colFg
             font.pixelSize: root.fontSize
             font.family: root.fontFamily
             font.bold: true
@@ -68,7 +68,7 @@
         Text {
             visible: isStatsVisible
             text: "Mem: " + memUsage + "%"
-            color: root.colWhite
+            color: root.colFg
             font.pixelSize: root.fontSize
             font.family: root.fontFamily
             font.bold: true
@@ -81,7 +81,7 @@
         Text {
             visible: isStatsVisible
             text: "Disk: " + diskUsage + "%"
-            color: root.colWhite
+            color: root.colFg
             font.pixelSize: root.fontSize
             font.family: root.fontFamily
             font.bold: true
@@ -122,7 +122,7 @@
             Text {
                 id: volLabel
                 text: isMuted ? "Mute" : "Vol: " + volumeLevel + "%"
-                color: isMuted ? colRed : colWhite
+                color: isMuted ? colRed : colFg
                 font.pixelSize: fontSize
                 font.family: fontFamily
                 font.bold: true

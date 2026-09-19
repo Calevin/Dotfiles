@@ -1,6 +1,9 @@
 { inputs, ... }:
 
 {
+  # Deshabilita Stylix especificamente para Hyprlock a nivel de usuario
+  stylix.targets.hyprlock.enable = false;
+
   # Habilitamos hyprlock nativamente mediante Home Manager
   programs.hyprlock = {
     enable = true;
@@ -28,7 +31,7 @@
         {
           monitor = "";
           # Descomentar la siguiente linea para usar un fondo de pantalla
-          path = "${inputs.self}/assets/wallpapers/ethereal-wallpaper.webp";
+          path = "${inputs.self}/assets/wallpapers/solarized-wallpaper.jpg";
 
           # Desenfoque (blur)
           # blur_passes = 2;

@@ -50,7 +50,6 @@
     btop
     fastfetch
     duf
-    nerd-fonts.jetbrains-mono
     gnomeExtensions.clipboard-history
     gnome-tweaks
     nautilus-open-any-terminal # Extension for nautilus, which adds an context-entry for opening other terminal-emulators then `gnome-terminal`
@@ -69,6 +68,7 @@
     hyprmon
     hyprpaper
     hyprcursor
+    hyprshutdown
     clipse
     wl-clipboard
     pavucontrol
@@ -84,15 +84,11 @@
     just
     lsd
     joplin-desktop
+    upscaler
   ];
 
   # Sirve para habilitar la gestión declarativa de los directorios base XDG (como ~/.config, ~/.cache y ~/.local/share)
   xdg.enable = true;
-
-  # Optimización automática del Nix Store
-  # Esto optimiza los archivos cada vez que se hace un build,
-  # evitando tener que correr 'nix store optimise' de forma manual.
-  nix.settings.auto-optimise-store = true;
 
   # Permitir a Home Manager gestionar su propia instalacion
   programs.home-manager.enable = true;

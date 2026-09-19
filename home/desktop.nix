@@ -3,11 +3,7 @@
 {
   imports = [
     ./common.nix
-    ../modules/user/hyprland.nix
-    ../modules/user/mako.nix
-    ../modules/user/wofi.nix
     ../modules/user/quickshell/quickshell.nix
-    ../modules/user/kitty.nix
     inputs.zen-browser.homeModules.default
   ];
 

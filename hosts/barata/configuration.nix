@@ -17,6 +17,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/system/nix-ld.nix
+      ../../modules/system/stylix.nix
     ];
 
   boot.loader.systemd-boot.enable = false;
@@ -117,10 +118,17 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     lm_sensors
-    bibata-cursors
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
   ];
+
+  # Optimización automática del Nix Store
+  # Esto optimiza los archivos cada vez que se hace un build,
+  # evitando tener que correr 'nix store optimise' de forma manual.
+  nix.optimise = {
+    automatic = true;
+    dates = [ "06:00" ]; # Se ejecuta automáticamente todos los días a las 6 AM
+  };
 
   # Automatic Garbage Collection
   nix.gc = {

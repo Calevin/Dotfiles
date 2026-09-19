@@ -16,7 +16,7 @@
         Text {
             id: clockText
             text: new Date().toLocaleString(Qt.locale("es_AR"), localeFormato)
-            color: root.colWhite
+            color: root.colFg
             font.pixelSize: root.fontSize
             font.family: root.fontFamily
             font.bold: true
@@ -85,8 +85,8 @@
             // Boton Play / Pausa
             Text {
                 id: btnPlayPause
-                text: mediaControls.isPlaying ? "||" : ">"
-                color: root.colWhite
+                text: mediaControls.isPlaying ? "[=]" : "[>]"
+                color: root.colFg
                 font.pixelSize: root.fontSize
                 font.family: root.fontFamily
                 font.bold: true
@@ -106,7 +106,7 @@
             Text {
                 id: trackTitleText
                 text: mediaControls.trackTitle
-                color: root.colWhite
+                color: root.colFg
                 font.pixelSize: root.fontSize
                 font.family: root.fontFamily
 
