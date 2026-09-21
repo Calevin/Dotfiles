@@ -85,6 +85,7 @@
     lsd
     joplin-desktop
     upscaler
+    caligula
   ];
 
   # Sirve para habilitar la gestión declarativa de los directorios base XDG (como ~/.config, ~/.cache y ~/.local/share)
