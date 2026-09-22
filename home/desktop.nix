@@ -3,6 +3,7 @@
 {
   imports = [
     ./common.nix
+    ../modules/user/hyprland_desktop.nix
     ../modules/user/quickshell/quickshell.nix
     inputs.zen-browser.homeModules.default
   ];
