@@ -68,6 +68,27 @@
           }
         ];
       }; # Cierra nixos-barata
+      # 'nixos-nitro' es el hostname
+      nixos-nitro = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/nitro/hardware-configuration.nix
+          ./hosts/nitro/configuration.nix
+          stylix.nixosModules.stylix
+
+          # Integracion de Home Manager como modulo del sistema
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            # Le pasa de forma explícita los inputs a Home Manager antes de evaluar los usuarios.
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.calevin = import ./home/nitro.nix;
+          }
+        ];
+      }; # Cierra nixos-desktop
     };
   };
 }

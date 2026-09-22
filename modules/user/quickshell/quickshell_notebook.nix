@@ -2,7 +2,12 @@
 
 {
   imports = [
-    ../scripts/quickshell-stats-notebook.nix
+    ../scripts/quickshell-stats.nix
+    ../scripts/quickshell-media-stats.nix
+    ./quickshell_separador.nix
+    ./quickshell_seccion_izq.nix
+    ./quickshell_seccion_centro.nix
+    ./quickshell_seccion_derecho.nix
   ];
 
   # Instalamos el paquete de quickshell
@@ -15,7 +20,7 @@
   # Creamos de forma declarativa el archivo de configuración principal de la barra
   xdg.configFile."quickshell/shell.qml".text = ''
     import Quickshell
-    //import Quickshell.Wayland
+    import Quickshell.Wayland
     import QtQuick
     import QtQuick.Layouts
 
@@ -23,12 +28,11 @@
         id: root
 
         // Theme colors
-        property color colBg: "#1a1b26"
-        property color colFg: "#a9b1d6"
-        property color colMuted: "#444b6a"
-        property color colCyan: "#0db9d7"
-        property color colFg: "#e6e7f2"
-        property color colRed: "#f7768e"
+        property color colBg: "#002731"   // base01
+        property color colFg: "#f8f8f2"   // base05
+        property color colMuted: "#001e26"// base00
+        property color colCyan: "#268bd2" // base0D
+        property color colRed: "#dc322f"  // base08
 
         // Font
         property string fontFamily: "JetBrainsMono Nerd Font"
