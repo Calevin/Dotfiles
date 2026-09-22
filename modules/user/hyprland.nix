@@ -112,17 +112,6 @@
           gradient_round_only_edges = false,
         }, -- groupbar
       }, -- group
-
-	    input = {
-	      numlock_by_default = true,
-	      kb_layout = "us",
-	      kb_variant = "altgr-intl",
-	      follow_mouse = 1,
-	      sensitivity = 0,
-	      touchpad = {
-	        natural_scroll = false,
-	      },
-	    }
 	  })
 
     -- =========================================================================
