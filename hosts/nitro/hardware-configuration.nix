@@ -24,6 +24,15 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/tera1" = {
+      device = "/dev/disk/by-uuid/9b489214-180a-4edb-b044-96f6e9d7500e";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "nofail" # Evita que el arranque del sistema se detenga si el disco falla o se desconecta
+      ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/70418367-2e9a-495f-80e4-355f36fff8ba"; }
     ];
