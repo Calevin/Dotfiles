@@ -36,6 +36,7 @@
       noche = "hyprctl hyprsunset temperature 4500 >/dev/null 2>&1";
       dia = "hyprctl hyprsunset temperature 6500 >/dev/null 2>&1";
       o = "handlr open";
+      undo_commit_not_pushed = "git reset --soft HEAD~";
     };
 
     # Inyectar funciones personalizadas en .zshrc
