@@ -32,6 +32,7 @@
 
             MouseArea {
                 anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     executor.command = ["gnome-calendar"]
                     executor.startDetached()
@@ -85,10 +86,10 @@
             // Boton Play / Pausa
             Text {
                 id: btnPlayPause
-                text: mediaControls.isPlaying ? "[=]" : "[>]"
+                text: mediaControls.isPlaying ? "󰏤" : "󰐊"
                 color: root.colFg
-                font.pixelSize: root.fontSize
-                font.family: root.fontFamily
+                font.pixelSize: Math.round(fontSize * 1.3)
+                font.family: "JetBrainsMono Nerd Font"
                 font.bold: true
 
                 MouseArea {

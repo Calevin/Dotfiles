@@ -17,22 +17,25 @@
         Item { width: 8 }
 
         // Icono
-        Rectangle {
+        Item {
             Layout.preferredWidth: 16
             Layout.preferredHeight: parent.height
-            color: "transparent"
 
             Image {
                 anchors.fill: parent
-                source: Qt.resolvedUrl("icon.png")
+                source: Qt.resolvedUrl("icons/owl.svg")
                 fillMode: Image.PreserveAspectFit
+                // Define el tamano de rasterizacion igual al tamano visual
+                sourceSize.width: width
+                sourceSize.height: height
             }
 
             MouseArea {
                 anchors.fill: parent
+                // Mejora la UX mostrando la mano al pasar por encima
+                cursorShape: Qt.PointingHandCursor
                 onClicked: {
-                    //console.log("isStatsVisible: ", isStatsVisible)
-                    isStatsVisible? isStatsVisible=false : isStatsVisible=true
+                  isStatsVisible = !isStatsVisible
                 }
             }
         }
@@ -73,6 +76,8 @@
 
                 MouseArea {
                     anchors.fill: parent
+                    // Mejora la UX mostrando la mano al pasar por encima
+                    cursorShape: Qt.PointingHandCursor
                     onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + (index + 1) + " })")
                 }
             }

@@ -92,8 +92,9 @@
 
         // Volumen
         Item {
-            Layout.preferredWidth: volLabel.implicitWidth
-            Layout.preferredHeight: volLabel.implicitHeight
+            id: volItem
+            Layout.preferredWidth: contentRow.implicitWidth
+            Layout.preferredHeight: contentRow.implicitHeight
             Layout.rightMargin: 8
 
             // Proceso de escritura
@@ -119,17 +120,38 @@
                 }
             }
 
-            Text {
-                id: volLabel
-                text: isMuted ? "Mute" : "Vol: " + volumeLevel + "%"
-                color: isMuted ? colRed : colFg
-                font.pixelSize: fontSize
-                font.family: fontFamily
-                font.bold: true
+            // Contenedor horizontal para icono y texto
+            Row {
+                id: contentRow
+                spacing: 6
+                anchors.verticalCenter: parent.verticalCenter
+
+                Text {
+                    id: volIconText
+                    // Glifos de Nerd Fonts (Volume Mute / Volume High)
+                    text: isMuted ? "󰖁" : "󰕾"
+                    color: isMuted ? colRed : colFg
+                    // Escala directa
+                    font.pixelSize: Math.round(fontSize * 1.3)
+                    font.family: "JetBrainsMono Nerd Font"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                Text {
+                    id: volLabel
+                    text: isMuted ? "Mute" : volumeLevel + "%"
+                    color: isMuted ? colRed : colFg
+                    font.pixelSize: fontSize
+                    font.family: fontFamily
+                    font.bold: true
+                    anchors.verticalCenter: parent.verticalCenter
+                }
             }
 
             MouseArea {
                 anchors.fill: parent
+                // Mejora la UX mostrando la mano al pasar por encima
+                cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
                     volWriteProc.command = ["wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle"]

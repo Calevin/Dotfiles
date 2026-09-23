@@ -13,9 +13,8 @@
   # Instalamos el paquete de quickshell
   home.packages = [ pkgs.quickshell ];
 
-  # Inyectamos el icono en la ruta especifica de .config:
-  home.file.".config/quickshell/icon.png".source = "${inputs.self}/assets/icons/nix-os-icon.png";
-
+  # Inyectamos el icono en la ruta especifica:
+  home.file.".config/quickshell/icons/owl.svg".source = "${inputs.self}/assets/icons/owl.svg";
 
   # Creamos de forma declarativa el archivo de configuración principal de la barra
   xdg.configFile."quickshell/shell.qml".text = ''
