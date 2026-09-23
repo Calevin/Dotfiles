@@ -1,6 +1,11 @@
 { ... }:
 
 {
+  systemd.services.syncthing.environment = {
+    LANG = "es_AR.UTF-8";
+    LC_ALL = "es_AR.UTF-8";
+  };
+
   services.syncthing = {
     enable = true;
     user = "calevin";
