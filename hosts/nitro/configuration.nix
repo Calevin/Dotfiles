@@ -91,12 +91,17 @@
   services.tlp = {
     enable = true;
     settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      # Dynamic scaling for Intel
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      # Balanced performance on AC, power saving on BAT
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      # Deshabilita el dGPU en bateria si no esta en uso
+      CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+
+      # Ensure PCIe devices can sleep
       RUNTIME_PM_ON_BAT = "auto";
+      RUNTIME_PM_ON_AC = "auto";
     };
   };
 
@@ -143,8 +148,6 @@
         enable = true;
         enableOffloadCmd = true;
       };
-
-      # Reemplaza estos valores con la salida de lspci
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
