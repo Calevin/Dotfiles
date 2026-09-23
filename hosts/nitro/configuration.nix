@@ -18,6 +18,7 @@
       ./hardware-configuration.nix
       ../../modules/system/nix-ld.nix
       ../../modules/system/stylix.nix
+      ../../modules/system/syncthing.nix
     ];
 
   # Reemplaza el kernel por defecto con linux-zen
