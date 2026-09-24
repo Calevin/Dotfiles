@@ -19,6 +19,7 @@
       ../../modules/system/nix-ld.nix
       ../../modules/system/stylix.nix
       ../../modules/system/syncthing.nix
+      ../../modules/system/avahi.nix
     ];
 
   # Reemplaza el kernel por defecto con linux-zen
