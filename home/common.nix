@@ -61,6 +61,7 @@
     vscodium
     zed-editor
     nil # Yet another language server for Nix, required by zen-editor
+    nixfmt # The official formatter for Nix code
     hyprlock
     hypridle
     hyprshot
