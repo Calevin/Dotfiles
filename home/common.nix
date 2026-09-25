@@ -32,6 +32,7 @@
     ../modules/user/kitty.nix
     ../modules/user/clipse.nix
     ../modules/user/scripts/daily-utils.nix
+    ../modules/user/zed-editor.nix
   ];
 
   # Instalar paquetes de usuario
@@ -59,7 +60,6 @@
     zathura
     kitty
     vscodium
-    zed-editor
     nil # Yet another language server for Nix, required by zen-editor
     nixfmt # The official formatter for Nix code
     hyprlock
