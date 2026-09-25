@@ -23,9 +23,14 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    antigravity-nix = {
+          url = "github:jacopone/antigravity-nix";
+          inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, stylix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, zen-browser, stylix, antigravity-nix,... }@inputs: {
     nixosConfigurations = {
       # 'nixos-desktop' es el hostname
       nixos-desktop = nixpkgs.lib.nixosSystem {

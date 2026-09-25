@@ -9,8 +9,10 @@
     fuse3
     alsa-lib
     openssl
-    # Bibliotecas adicionales frecuentes para Java, IDEs o Node
+    curl
+    icu
     glib
+    glibc
     libX11
   ];
 }

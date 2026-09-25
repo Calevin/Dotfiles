@@ -5,6 +5,8 @@
     ./common.nix
     ../modules/user/hyprland_desktop.nix
     ../modules/user/quickshell/quickshell.nix
+    ../modules/user/antigravity-cli.nix
+    ../modules/user/opencode.nix
     inputs.zen-browser.homeModules.default
   ];
 
@@ -13,6 +15,7 @@
     google-chrome
     brave
     meld
+    (callPackage ../packages/engram.nix { })
   ];
 
   home.file."Github/Dotfiles/.justfile".text = ''
