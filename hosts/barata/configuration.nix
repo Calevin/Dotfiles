@@ -13,14 +13,14 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/system/nix-ld.nix
-      ../../modules/system/stylix.nix
-      ../../modules/system/syncthing.nix
-      ../../modules/system/avahi.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/system/nix-ld.nix
+    ../../modules/system/stylix.nix
+    ../../modules/system/syncthing.nix
+    ../../modules/system/avahi.nix
+  ];
 
   boot.loader.systemd-boot.enable = false;
 
@@ -32,7 +32,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
 
   # Set your time zone.
   time.timeZone = "America/Argentina/Buenos_Aires";
@@ -92,7 +95,10 @@
   services.libinput.enable = true;
 
   # Habilitar Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable Zsh at the system level to add it to /etc/shells
   programs.zsh.enable = true;
@@ -101,7 +107,10 @@
   users.users."calevin" = {
     isNormalUser = true;
     description = "Sebastian Calevin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -124,8 +133,8 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     lm_sensors
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
+    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #   wget
   ];
 
   # Optimización automática del Nix Store

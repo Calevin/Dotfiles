@@ -11,6 +11,7 @@
       "zed-qml"
     ];
     userSettings = {
+      format_on_save = "on";
       terminal = {
         font_family = "JetBrainsMono Nerd Font";
       };

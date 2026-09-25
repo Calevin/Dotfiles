@@ -1,4 +1,8 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 
 # La función buildGoModule es un constructor especializado dentro de Nixpkgs (una envoltura de stdenv.mkDerivation).
 # Esta función abstrae completamente el ciclo de vida de una aplicación Go.

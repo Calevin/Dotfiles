@@ -97,5 +97,5 @@
             maximumLineCount: 1
         }
     } // Fin Seccion Izquierda
-    '';
+  '';
 }

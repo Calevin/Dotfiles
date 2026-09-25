@@ -55,9 +55,9 @@
           # Colores del tema Solarized Dark
           outer_color = "rgba(2aa198ff)"; # Cyan
           inner_color = "rgba(073642ff)"; # Base02
-          font_color = "rgba(839496ff)";  # Base0
+          font_color = "rgba(839496ff)"; # Base0
           check_color = "rgba(b58900ff)"; # Yellow
-          fail_color = "rgba(dc322fff)";  # Red
+          fail_color = "rgba(dc322fff)"; # Red
 
           fade_on_empty = false;
           placeholder_text = "<i>Password...</i>";

@@ -29,8 +29,8 @@
       rm = "rm -vI";
       mkd = "mkdir -pv";
       grep = "grep --color=always";
-      copiar_pwd="pwd | tr -d \"\n\" | wl-copy";
-      al_portapapeles="wl-copy";
+      copiar_pwd = "pwd | tr -d \"\n\" | wl-copy";
+      al_portapapeles = "wl-copy";
       mi_ip = "ip -4 addr show";
       el_pronostico = "curl 'wttr.in/san%20miguel,%20buenos%20aires?M&lang=es'";
       noche = "hyprctl hyprsunset temperature 4500 >/dev/null 2>&1";

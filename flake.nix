@@ -25,75 +25,85 @@
     };
 
     antigravity-nix = {
-          url = "github:jacopone/antigravity-nix";
-          inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, stylix, antigravity-nix,... }@inputs: {
-    nixosConfigurations = {
-      # 'nixos-desktop' es el hostname
-      nixos-desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/desktop/hardware-configuration.nix
-          ./hosts/desktop/configuration.nix
-          stylix.nixosModules.stylix
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      stylix,
+      antigravity-nix,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        # 'nixos-desktop' es el hostname
+        nixos-desktop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/desktop/hardware-configuration.nix
+            ./hosts/desktop/configuration.nix
+            stylix.nixosModules.stylix
 
-          # Integracion de Home Manager como modulo del sistema
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            # Le pasa de forma explícita los inputs a Home Manager antes de evaluar los usuarios.
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.calevin = import ./home/desktop.nix;
-          }
-        ];
-      }; # Cierra nixos-desktop
-      # 'nixos-barata' es el hostname
-      nixos-barata = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/barata/hardware-configuration.nix
-          ./hosts/barata/configuration.nix
-          stylix.nixosModules.stylix
+            # Integracion de Home Manager como modulo del sistema
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              # Le pasa de forma explícita los inputs a Home Manager antes de evaluar los usuarios.
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.calevin = import ./home/desktop.nix;
+            }
+          ];
+        }; # Cierra nixos-desktop
+        # 'nixos-barata' es el hostname
+        nixos-barata = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/barata/hardware-configuration.nix
+            ./hosts/barata/configuration.nix
+            stylix.nixosModules.stylix
 
-          # Integracion de Home Manager como modulo del sistema
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.calevin = import ./home/laboratorio.nix;
-          }
-        ];
-      }; # Cierra nixos-barata
-      # 'nixos-nitro' es el hostname
-      nixos-nitro = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/nitro/hardware-configuration.nix
-          ./hosts/nitro/configuration.nix
-          stylix.nixosModules.stylix
+            # Integracion de Home Manager como modulo del sistema
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.calevin = import ./home/laboratorio.nix;
+            }
+          ];
+        }; # Cierra nixos-barata
+        # 'nixos-nitro' es el hostname
+        nixos-nitro = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/nitro/hardware-configuration.nix
+            ./hosts/nitro/configuration.nix
+            stylix.nixosModules.stylix
 
-          # Integracion de Home Manager como modulo del sistema
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            # Le pasa de forma explícita los inputs a Home Manager antes de evaluar los usuarios.
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.calevin = import ./home/nitro.nix;
-          }
-        ];
-      }; # Cierra nixos-desktop
+            # Integracion de Home Manager como modulo del sistema
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              # Le pasa de forma explícita los inputs a Home Manager antes de evaluar los usuarios.
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.calevin = import ./home/nitro.nix;
+            }
+          ];
+        }; # Cierra nixos-desktop
+      };
     };
-  };
 }

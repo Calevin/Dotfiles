@@ -14,5 +14,5 @@
       Layout.rightMargin: 8
       color: root.colFg
     }
-    '';
+  '';
 }

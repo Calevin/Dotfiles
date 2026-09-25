@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   # Habilitar nix-ld para binarios dinamicos
   programs.nix-ld.enable = true;

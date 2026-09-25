@@ -8,7 +8,7 @@
 
     settings = {
       # Configuración general de la interfaz y comportamiento
-      output="HDMI-A-3";
+      output = "HDMI-A-3";
       width = 400;
       height = 220;
       margin = "10,10";
@@ -17,7 +17,7 @@
       #borderRadius = 8;
       default-timeout = 15000; # Tiempo en milisegundos (15 segundos)
       group-by = "category";
-      max-history=20;
+      max-history = 20;
     };
 
     # Configuraciones específicas por niveles de urgencia

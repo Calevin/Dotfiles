@@ -1,15 +1,14 @@
 { pkgs, ... }:
 
 {
-
   stylix.targets.zen-browser.enable = false;
 
   gtk = {
-      enable = true;
-      iconTheme = {
-        package = pkgs.papirus-icon-theme;
-        name = "Papirus-Dark";
-      };
+    enable = true;
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
   };
 
   dconf.settings = {
