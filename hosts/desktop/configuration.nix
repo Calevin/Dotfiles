@@ -147,6 +147,10 @@
     shell = pkgs.zsh;
   };
 
+  environment.variables = {
+    EDITOR = "micro";
+  };
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";

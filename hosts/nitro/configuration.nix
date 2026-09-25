@@ -212,6 +212,10 @@
     shell = pkgs.zsh;
   };
 
+  environment.variables = {
+    EDITOR = "micro";
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
