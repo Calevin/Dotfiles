@@ -16,7 +16,13 @@
     brave
     meld
     (callPackage ../packages/engram.nix { })
+    protonup-qt
   ];
+
+  # Configurar variables de entorno si se requiere forzar Wayland o X11
+  home.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+  };
 
   home.file."Github/Dotfiles/.justfile".text = ''
     # Default recipe to list available commands

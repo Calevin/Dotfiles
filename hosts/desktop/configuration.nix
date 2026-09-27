@@ -109,6 +109,19 @@
   # Fuerza el uso del driver amdgpu para la RX Vega 56
   services.xserver.videoDrivers = [ "amdgpu" ];
 
+  # Habilitar Steam a nivel de sistema
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    # Garantiza que Steam tenga acceso a las librerias de compatibilidad
+    gamescopeSession.enable = true;
+  };
+
+  # Optimizacion de recursos de CPU/GPU para juegos
+  programs.gamemode.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
