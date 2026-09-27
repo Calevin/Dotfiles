@@ -23,6 +23,7 @@
       window_padding_width = 8;
       background_blur = "1";
       placement_strategy = "top-left";
+      remember_window_size = "no";
     };
 
     keybindings = {
