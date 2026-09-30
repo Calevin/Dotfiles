@@ -17,6 +17,7 @@
     meld
     (callPackage ../packages/engram.nix { })
     protonup-qt
+    libreoffice
   ];
 
   # Configurar variables de entorno si se requiere forzar Wayland o X11
