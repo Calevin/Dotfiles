@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../scripts/quickshell-stats.nix
+    ../scripts/quickshell-stats-notebook.nix
     ../scripts/quickshell-media-stats.nix
     ./quickshell_separador.nix
     ./quickshell_seccion_izq.nix
@@ -20,6 +20,7 @@
   xdg.configFile."quickshell/shell.qml".text = ''
     import Quickshell
     import Quickshell.Wayland
+    import Quickshell.Io
     import QtQuick
     import QtQuick.Layouts
 
@@ -38,6 +39,7 @@
         property int fontSize: 10
 
         property bool isStatsVisible: false
+        property int brightnessLevel: 0
 
         // Instancia unica atada exclusivamente al monitor eDP-1
         PanelWindow {

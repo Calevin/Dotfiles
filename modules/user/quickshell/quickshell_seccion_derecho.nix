@@ -166,6 +166,66 @@
             }
         } // Volumen
 
+        Separador {}
+
+        // Brillo
+        Item {
+            Layout.preferredWidth: briLabel.implicitWidth
+            Layout.preferredHeight: briLabel.implicitHeight
+            Layout.rightMargin: 8
+
+            // Proceso de escritura
+            Process {
+                id: briWriteProc
+                // Al terminar de escribir, dispara una lectura inmediata
+                onExited: briReadInstant.running = true
+            }
+
+            // Lectura inmediata para feedback visual sin delay
+            Process {
+                id: briReadInstant
+                // El flag -m (machine-readable) devuelve: "device,class,current%,current_raw,max_raw"
+                command: ["brightnessctl", "-m"]
+                stdout: SplitParser {
+                    onRead: data => {
+                        if (!data) return
+                        // Extrae el porcentaje usando expresiones regulares (busca el número antes del %)
+                        var match = data.match(/,(\d+)%,/)
+                        if (match) {
+                            root.brightnessLevel = parseInt(match[1])
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: briLabel
+                text: "Bri: " + root.brightnessLevel + "%"
+                color: root.colFg
+                font.pixelSize: root.fontSize
+                font.family: root.fontFamily
+                font.bold: true
+            }
+
+            MouseArea {
+                anchors.fill: parent
+
+                // Si necesitas que haga algo al hacer clic (ej. toggle entre 10% y 100%), puedes definirlo aquí
+                onClicked: {
+                    var target = root.brightnessLevel > 20 ? "10%" : "100%"
+                    briWriteProc.command = ["brightnessctl", "s", target]
+                    briWriteProc.running = true
+                }
+
+                onWheel: wheel => {
+                    // Evita que baje de 1% para no apagar la pantalla por completo por error
+                    var step = wheel.angleDelta.y > 0 ? "5%+" : "5%-"
+                    briWriteProc.command = ["brightnessctl", "s", step]
+                    briWriteProc.running = true
+                }
+            }
+        } // Brillo
+
         Item { width: 10 }
     } // // PanelWindow - Rectangle - RowLayout
 
