@@ -33,6 +33,7 @@
     ../modules/user/clipse.nix
     ../modules/user/scripts/daily-utils.nix
     ../modules/user/zed-editor.nix
+    ../modules/user/direnv.nix
   ];
 
   # Instalar paquetes de usuario
@@ -89,6 +90,7 @@
     caligula
     file-roller
     yt-dlp
+    openssl
   ];
 
   # Sirve para habilitar la gestión declarativa de los directorios base XDG (como ~/.config, ~/.cache y ~/.local/share)
