@@ -18,6 +18,7 @@
     (callPackage ../packages/engram.nix { })
     protonup-qt
     libreoffice
+    calibre
   ];
 
   # Configurar variables de entorno si se requiere forzar Wayland o X11
