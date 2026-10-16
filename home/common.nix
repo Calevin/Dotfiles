@@ -91,6 +91,7 @@
     file-roller
     yt-dlp
     openssl
+    inlyne
   ];
 
   # Sirve para habilitar la gestión declarativa de los directorios base XDG (como ~/.config, ~/.cache y ~/.local/share)
