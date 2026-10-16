@@ -6,6 +6,8 @@
     ../modules/user/hyprland_notebook.nix
     ../modules/user/quickshell/quickshell_notebook.nix
     inputs.zen-browser.homeModules.default
+    ../modules/user/antigravity-cli.nix
+    ../modules/user/opencode.nix
   ];
 
   # Instalar paquetes de usuario
@@ -17,6 +19,7 @@
     brave
     meld
     protonup-qt
+    (callPackage ../packages/engram.nix { })
   ];
 
   # Opcional: Configurar variables de entorno si se requiere forzar Wayland o X11
