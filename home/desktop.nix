@@ -19,6 +19,8 @@
     protonup-qt
     libreoffice
     calibre
+    luanti
+    airshipper
   ];
 
   # Configurar variables de entorno si se requiere forzar Wayland o X11
