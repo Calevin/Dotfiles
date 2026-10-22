@@ -158,6 +158,9 @@
   # Enable Zsh at the system level to add it to /etc/shells
   programs.zsh.enable = true;
 
+  # Habilitar el demonio del sistema Docker
+  virtualisation.docker.enable = true;
+
   # Usuario que coincide con el del archivo flake.nix
   users.users."calevin" = {
     isNormalUser = true;
