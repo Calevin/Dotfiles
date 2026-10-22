@@ -21,6 +21,8 @@
     calibre
     luanti
     airshipper
+    pi-coding-agent
+    sqlitebrowser
   ];
 
   # Configurar variables de entorno si se requiere forzar Wayland o X11
