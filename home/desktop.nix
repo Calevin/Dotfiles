@@ -23,6 +23,7 @@
     airshipper
     pi-coding-agent
     sqlitebrowser
+    chromium
   ];
 
   # Configurar variables de entorno si se requiere forzar Wayland o X11

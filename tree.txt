@@ -1,0 +1,69 @@
+.
+├── assets
+│   ├── icons
+│   │   └── owl.svg
+│   └── wallpapers
+│       └── solarized-wallpaper.jpg
+├── flake.lock
+├── flake.nix
+├── home
+│   ├── common.nix
+│   ├── desktop.nix
+│   ├── laboratorio.nix
+│   └── nitro.nix
+├── hosts
+│   ├── barata
+│   │   ├── configuration.nix
+│   │   └── hardware-configuration.nix
+│   ├── desktop
+│   │   ├── configuration.nix
+│   │   └── hardware-configuration.nix
+│   └── nitro
+│       ├── configuration.nix
+│       └── hardware-configuration.nix
+├── modules
+│   ├── system
+│   │   ├── nix-ld.nix
+│   │   ├── stylix.nix
+│   │   └── syncthing.nix
+│   └── user
+│       ├── antigravity-cli.nix
+│       ├── clipse.nix
+│       ├── direnv.nix
+│       ├── fd.nix
+│       ├── fzf.nix
+│       ├── hyprland_desktop.nix
+│       ├── hyprland.nix
+│       ├── hyprland_notebook.nix
+│       ├── hyprlock.nix
+│       ├── hyprpaper.nix
+│       ├── hyprshot.nix
+│       ├── hyprsunset.nix
+│       ├── kitty.nix
+│       ├── looknfeel.nix
+│       ├── mako.nix
+│       ├── opencode.nix
+│       ├── quickshell
+│       │   ├── quickshell.nix
+│       │   ├── quickshell_notebook.nix
+│       │   ├── quickshell_seccion_centro.nix
+│       │   ├── quickshell_seccion_derecho.nix
+│       │   ├── quickshell_seccion_izq.nix
+│       │   └── quickshell_separador.nix
+│       ├── scripts
+│       │   ├── daily-utils.nix
+│       │   ├── quickshell-media-stats.nix
+│       │   ├── quickshell-stats.nix
+│       │   └── quickshell-stats-notebook.nix
+│       ├── theme
+│       │   └── scheme.yaml
+│       ├── wofi.nix
+│       ├── zed-editor.nix
+│       ├── zoxide.nix
+│       └── zsh.nix
+├── packages
+│   └── engram.nix
+├── README.md
+└── tree.txt
+
+16 directories, 52 files
