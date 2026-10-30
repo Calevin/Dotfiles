@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   programs.opencode = {
     enable = true;
-    package = pkgs.opencode;
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
 
     enableMcpIntegration = true;
   };

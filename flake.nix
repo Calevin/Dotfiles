@@ -5,6 +5,12 @@
 {
   description = "NixOS configuration with Flakes, Home Manager, and nix-ld";
 
+  # Configuracion de cache binario para herramientas de Numtide
+  nixConfig = {
+    extra-substituters = [ "https://cache.numtide.com" ];
+    extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
+  };
+
   # Definir las fuentes (inputs) de los paquetes
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -24,8 +30,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -37,7 +43,7 @@
       home-manager,
       zen-browser,
       stylix,
-      antigravity-nix,
+      llm-agents,
       ...
     }@inputs:
     {

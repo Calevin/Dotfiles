@@ -1,9 +1,9 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   programs.antigravity-cli = {
     enable = true;
-    package = inputs.antigravity-nix.packages.x86_64-linux.google-antigravity-cli;
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.antigravity-cli;
     settings = {
       colorScheme = "solarized dark";
     };
@@ -20,6 +20,6 @@
 
   programs.antigravity = {
     enable = true;
-    package = inputs.antigravity-nix.packages.x86_64-linux.default; # standalone Antigravity 2.0 app
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.antigravity-hub; # Aplicacion standalone Antigravity 2.0
   };
 }

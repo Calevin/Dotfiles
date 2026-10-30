@@ -6,7 +6,7 @@
     ../modules/user/hyprland_notebook.nix
     ../modules/user/quickshell/quickshell_notebook.nix
     inputs.zen-browser.homeModules.default
-    ../modules/user/antigravity-cli.nix
+    ../modules/user/antigravity.nix
     ../modules/user/opencode.nix
   ];
 

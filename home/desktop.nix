@@ -5,7 +5,7 @@
     ./common.nix
     ../modules/user/hyprland_desktop.nix
     ../modules/user/quickshell/quickshell.nix
-    ../modules/user/antigravity-cli.nix
+    ../modules/user/antigravity.nix
     ../modules/user/opencode.nix
     inputs.zen-browser.homeModules.default
   ];
@@ -18,7 +18,7 @@
     (callPackage ../packages/engram.nix { })
     protonup-qt
     libreoffice
-    calibre
+    # calibre
     luanti
     airshipper
     pi-coding-agent
