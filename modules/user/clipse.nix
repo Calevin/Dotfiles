@@ -5,7 +5,11 @@
     # https://search.nixos.org/options?channel=26.05&query=services.clipse&source=home_manager
     enable = true;
     systemdTarget = "hyprland-session.target";
-    imageDisplay.type = "kitty";
+    settings = {
+      imageDisplay = {
+        type = "kitty";
+      };
+    };
     theme = {
       # Solarized Dark theme para clipse
       useCustomTheme = true;
