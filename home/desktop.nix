@@ -7,6 +7,7 @@
     ../modules/user/quickshell/quickshell.nix
     ../modules/user/antigravity.nix
     ../modules/user/opencode.nix
+    ../modules/user/dev-tools.nix
     inputs.zen-browser.homeModules.default
   ];
 
