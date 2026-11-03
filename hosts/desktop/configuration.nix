@@ -189,9 +189,6 @@
       "resume=UUID=eaa5bc84-367e-4d6f-8904-aff62176f5d9"
       "resume_offset=233445376"
     ];
-
-    # Habilitar initrd systemd para manejo moderno de reanudación
-    initrd.systemd.enable = true;
   };
 
   # Install firefox.
