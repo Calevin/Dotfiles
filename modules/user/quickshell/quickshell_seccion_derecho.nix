@@ -14,6 +14,7 @@
         property int diskUsage: 0
         property int volumeLevel: 0
         property bool isMuted: false
+        property int battery: 0
 
         // Proceso unificado para estadisticas del sistema
         Process {
@@ -37,6 +38,7 @@
                         diskUsage = stats.disk
                         volumeLevel = stats.vol
                         isMuted = stats.muted
+                        battery = stats.bat
                     } catch (e) {
                         console.error("Error al parsear el JSON de metricas: ", e)
                     }
@@ -225,6 +227,18 @@
                 }
             }
         } // Brillo
+
+        Separador {}
+
+        // Bateria
+        Text {
+            text: "Bat: " + battery + "%"
+            color: root.colFg
+            font.pixelSize: root.fontSize
+            font.family: root.fontFamily
+            font.bold: true
+            Layout.rightMargin: 8
+        } // Bateria
 
         Item { width: 10 }
     } // // PanelWindow - Rectangle - RowLayout

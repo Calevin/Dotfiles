@@ -48,8 +48,11 @@ let
         # 5. Brillo
         brightness=$(brightnessctl info | grep -oP '\(\K[0-9]+(?=%\))')
 
+        # 6. Bateria
+        battery=$(cat /sys/class/power_supply/BAT1/capacity)
+
         # Emitir JSON estructurado por stdout
-        printf '{"cpu": %d, "mem": %d, "disk": %d, "vol": %d, "muted": %s, "bri": %d}\n' "$cpu_usage" "$mem_usage" "$disk_usage" "$vol_percent" "$is_muted" "$brightness"
+        printf '{"cpu": %d, "mem": %d, "disk": %d, "vol": %d, "muted": %s, "bri": %d, "bat": %d}\n' "$cpu_usage" "$mem_usage" "$disk_usage" "$vol_percent" "$is_muted" "$brightness" "$battery"
 
         # Esperar antes de la siguiente iteracion
         sleep 2
