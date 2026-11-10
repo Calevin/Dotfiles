@@ -136,7 +136,7 @@ in
                   Text {
                       id: volIconText
                       // Glifos de Nerd Fonts
-                      text: isMuted ? "\uf0581" : "\uf057e"
+                      text: isMuted ? "󰖁" : "󰕾"
                       color: isMuted ? colRed : colFg
                       font.pixelSize: Math.round(fontSize * 1.3)
                       font.family: "JetBrainsMono Nerd Font"
@@ -203,7 +203,7 @@ in
 
               Text {
                   id: briLabel
-                  text: "Bri: " + (root.brightnessLevel ?? 0) + "%"
+                  text: "󰃞 " + (root.brightnessLevel ?? 0) + "%"
                   color: root.colFg
                   font.pixelSize: root.fontSize
                   font.family: root.fontFamily
@@ -231,7 +231,7 @@ in
 
           // Nivel de Bateria (solo disponible en perfil notebook)
           Text {
-              text: "Bat: " + battery + "%"
+              text: "󰁹 " + battery + "%"
               color: root.colFg
               font.pixelSize: root.fontSize
               font.family: root.fontFamily
