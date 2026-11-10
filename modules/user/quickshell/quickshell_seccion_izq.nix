@@ -1,7 +1,12 @@
-{ ... }:
+{ config, lib, ... }:
+
+let
+  cfg = config.custom.quickshell;
+in
 {
-  # Seccion Izquierda: Logo NixOs, Workspaces y ventana activa
-  xdg.configFile."quickshell/SeccionIzquierda.qml".text = ''
+  config = lib.mkIf cfg.enable {
+    # Seccion Izquierda: Logo NixOs, Workspaces y ventana activa
+    xdg.configFile."quickshell/SeccionIzquierda.qml".text = ''
     import Quickshell
     import QtQuick.Layouts
     import QtQuick
@@ -98,4 +103,5 @@
         }
     } // Fin Seccion Izquierda
   '';
+  };
 }

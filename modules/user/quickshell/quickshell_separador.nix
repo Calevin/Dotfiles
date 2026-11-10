@@ -1,18 +1,24 @@
-{ ... }:
-{
-  # Creamos de forma declarativa el archivo de configuración principal de la barra
-  xdg.configFile."quickshell/Separador.qml".text = ''
-    import Quickshell
-    import QtQuick.Layouts
-    import QtQuick
+{ config, lib, ... }:
 
-    Rectangle {
-      Layout.preferredWidth: 1
-      Layout.preferredHeight: 16
-      Layout.alignment: Qt.AlignVCenter
-      Layout.leftMargin: 2
-      Layout.rightMargin: 8
-      color: root.colFg
-    }
-  '';
+let
+  cfg = config.custom.quickshell;
+in
+{
+  config = lib.mkIf cfg.enable {
+    # Separador visual vertical para los elementos de la barra
+    xdg.configFile."quickshell/Separador.qml".text = ''
+      import Quickshell
+      import QtQuick.Layouts
+      import QtQuick
+
+      Rectangle {
+        Layout.preferredWidth: 1
+        Layout.preferredHeight: 16
+        Layout.alignment: Qt.AlignVCenter
+        Layout.leftMargin: 2
+        Layout.rightMargin: 8
+        color: root.colFg
+      }
+    '';
+  };
 }

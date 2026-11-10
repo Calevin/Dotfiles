@@ -1,7 +1,12 @@
-{ ... }:
+{ config, lib, ... }:
+
+let
+  cfg = config.custom.quickshell;
+in
 {
-  # Seccion Centro: Reloj
-  xdg.configFile."quickshell/SeccionCentro.qml".text = ''
+  config = lib.mkIf cfg.enable {
+    # Seccion Centro: Reloj y Reproductor multimedia
+    xdg.configFile."quickshell/SeccionCentro.qml".text = ''
     import QtQuick
     import Quickshell.Io
     import QtQuick.Layouts
@@ -118,4 +123,5 @@
     }
 
   '';
+  };
 }

@@ -4,17 +4,22 @@
   imports = [
     ./common.nix
     ../modules/user/hyprland_notebook.nix
-    ../modules/user/quickshell/quickshell_notebook.nix
+    ../modules/user/quickshell
     inputs.zen-browser.homeModules.default
     ../modules/user/antigravity.nix
     ../modules/user/opencode.nix
   ];
 
+  # Configuracion de QuickShell para Notebook Acer Nitro
+  custom.quickshell = {
+    enable = true;
+    deviceType = "notebook";
+  };
+
   # Instalar paquetes de usuario
   home.packages = with pkgs; [
     nvtopPackages.nvidia
     pciutils
-    brightnessctl
     google-chrome
     brave
     meld

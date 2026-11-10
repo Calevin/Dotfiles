@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
-  # Crea un binario en el nix store llamado "system_stats"
+  cfg = config.custom.quickshell;
+  isNotebook = cfg.enable && (cfg.deviceType == "notebook");
+
+  # Genera el script de recoleccion unificado
   systemStats = pkgs.writeShellScriptBin "system_stats" ''
     # Variables de estado previo para el calculo de CPU
     prev_total=0
@@ -45,22 +48,38 @@ let
             is_muted="true"
         fi
 
-        # Emitir JSON estructurado por stdout
-        printf '{"cpu": %d, "mem": %d, "disk": %d, "vol": %d, "muted": %s}\n' "$cpu_usage" "$mem_usage" "$disk_usage" "$vol_percent" "$is_muted"
+        ${lib.optionalString isNotebook ''
+        # 5. Nivel de Brillo (solo para notebooks)
+        brightness=$(${pkgs.brightnessctl}/bin/brightnessctl info 2>/dev/null | grep -oP '\(\K[0-9]+(?=%\))' || echo 0)
+
+        # 6. Nivel de Bateria dinamico para BAT0/BAT1 (solo para notebooks)
+        battery=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null | head -n1 || echo 0)
+
+        # Emitir JSON estructurado con brillo y bateria
+        printf '{"cpu": %d, "mem": %d, "disk": %d, "vol": %d, "muted": %s, "bri": %d, "bat": %d}\n' \
+            "$cpu_usage" "$mem_usage" "$disk_usage" "$vol_percent" "$is_muted" "$brightness" "$battery"
+        ''}
+
+        ${lib.optionalString (!isNotebook) ''
+        # Emitir JSON estructurado estandar para desktop
+        printf '{"cpu": %d, "mem": %d, "disk": %d, "vol": %d, "muted": %s}\n' \
+            "$cpu_usage" "$mem_usage" "$disk_usage" "$vol_percent" "$is_muted"
+        ''}
 
         # Esperar antes de la siguiente iteracion
         sleep 2
     done
-
   '';
 in
 {
-  # Agrega el script al PATH del usuario
-  home.packages = [ systemStats ];
+  config = lib.mkIf cfg.enable {
+    # Agrega el binario al PATH del usuario
+    home.packages = [ systemStats ];
 
-  # Si Quickshell requiere estrictamente que el script este en .config:
-  home.file.".config/quickshell/system_stats.sh" = {
-    source = "${systemStats}/bin/system_stats";
-    executable = true;
+    # Enlace directo en el directorio de configuracion de quickshell
+    home.file.".config/quickshell/system_stats.sh" = {
+      source = "${systemStats}/bin/system_stats";
+      executable = true;
+    };
   };
 }

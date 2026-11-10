@@ -4,7 +4,7 @@
   imports = [
     ./common.nix
     ../modules/user/hyprland_desktop.nix
-    ../modules/user/quickshell/quickshell.nix
+    ../modules/user/quickshell
     ../modules/user/antigravity.nix
     ../modules/user/opencode.nix
     ../modules/user/dev-tools.nix
@@ -20,12 +20,16 @@
     protonup-qt
     libreoffice
     # calibre
-    luanti
-    airshipper
     pi-coding-agent
     sqlitebrowser
     chromium
   ];
+
+  # Configuracion de QuickShell para PC Desktop
+  custom.quickshell = {
+    enable = true;
+    deviceType = "desktop";
+  };
 
   # Configurar variables de entorno si se requiere forzar Wayland o X11
   home.sessionVariables = {

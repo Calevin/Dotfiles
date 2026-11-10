@@ -3,13 +3,17 @@
 {
   imports = [
     ./common.nix
-    ../modules/user/quickshell/quickshell_notebook.nix
+    ../modules/user/quickshell
   ];
 
+  # Configuracion de QuickShell para Notebook Lenovo (Laboratorio)
+  custom.quickshell = {
+    enable = true;
+    deviceType = "notebook";
+  };
+
   # Instalar paquetes de usuario
-  home.packages = with pkgs; [
-    brightnessctl
-  ];
+  home.packages = with pkgs; [ ];
 
   home.file."Github/Dotfiles/.justfile".text = ''
     # Default recipe to list available commands

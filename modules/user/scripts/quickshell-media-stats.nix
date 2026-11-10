@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
+  cfg = config.custom.quickshell;
   # Crea un binario en el nix store llamado "media_stats"
   # Las dependencias externas (como playerctl) deben referenciarse usando la interpolación de Nix (${pkgs.playerctl}/bin/playerctl) para asegurar su disponibilidad sin depender del PATH global del sistema.
   # Las variables propias de bash que utilizan llaves deben escaparse con un apóstrofe adicional (''${variable}) para evitar que Nix intente evaluarlas en tiempo de compilación.
@@ -33,12 +34,14 @@ let
   '';
 in
 {
-  # Agrega el script al PATH del usuario
-  home.packages = [ mediaStats ];
+  config = lib.mkIf cfg.enable {
+    # Agrega el script al PATH del usuario
+    home.packages = [ mediaStats ];
 
-  # Si Quickshell requiere estrictamente que el script este en .config:
-  home.file.".config/quickshell/media_stats.sh" = {
-    source = "${mediaStats}/bin/media_stats";
-    executable = true;
+    # Si Quickshell requiere estrictamente que el script este en .config:
+    home.file.".config/quickshell/media_stats.sh" = {
+      source = "${mediaStats}/bin/media_stats";
+      executable = true;
+    };
   };
 }
